@@ -6,7 +6,7 @@ class Solution(object):
                          nums[i], nums[j] = nums[j], nums[i]
                 
         occurence =[]
-        for ii in  range(len(nums)): 
-            if nums[ii] == target:
-                occurence.append(ii)
+        for k in  range(len(nums)): 
+            if nums[k] == target:
+                occurence.append(k)
         return occurence
