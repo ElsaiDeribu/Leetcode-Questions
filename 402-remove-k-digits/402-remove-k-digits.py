@@ -5,12 +5,10 @@ class Solution:
         NumberOfDigitsToRemove = k
         
         for i in range(len(num)):
-            while st and int(num[i]) < st[-1]:
-                if NumberOfDigitsToRemove > 0:
+            while st and int(num[i]) < st[-1] and  NumberOfDigitsToRemove > 0:
                     st.pop()
                     NumberOfDigitsToRemove -= 1
-                else:
-                    break
+                
 
             st.append(int(num[i]))
 
