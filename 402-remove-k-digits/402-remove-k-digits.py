@@ -9,15 +9,15 @@ class Solution:
                     st.pop()
                     NumberOfDigitsToRemove -= 1
                 
-
             st.append(int(num[i]))
 
         while NumberOfDigitsToRemove:
             st.pop()
             NumberOfDigitsToRemove-=1
-          
-        while len(st) > 1 and st[0] == 0:
-            st.pop(0)
+        i = 0
+        while i < len(st) and st[i] == 0:
+            i+=1
+        st = st[i:]
         if not st:
             st.append(0)
         
