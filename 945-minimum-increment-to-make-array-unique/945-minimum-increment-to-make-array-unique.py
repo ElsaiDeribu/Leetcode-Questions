@@ -12,10 +12,7 @@ class Solution:
                 
                 moves += (numbers[i] - numbers[i+1] + 1)
                 numbers[i+1] +=  (numbers[i] - numbers[i+1] + 1)
-                  
-                 
-                    
-        
+                     
         return moves
                     
         
