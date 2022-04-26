@@ -8,16 +8,8 @@ class Solution:
                 return 0
             return 1
         for i in range(len(citations)):
-            if citations[i] == (lastNumberIndex - i + 1):
-                hIndex = citations[i]
-                
-            elif citations[i] < (lastNumberIndex - i + 1):
-                continue
-            
-
-            while citations[i] > (lastNumberIndex - i + 1):
-                citations[i] -= 1
-            return citations[i]
+            if citations[i] >= (len(citations) - i):
+                return len(citations) - i
+        return 0
         
-        return hIndex
         
