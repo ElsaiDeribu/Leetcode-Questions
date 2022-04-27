@@ -19,8 +19,7 @@ class Solution:
             elif ((j-i+1)*numbers[j])-sum > k:
                     sum -= numbers[i]
                     i += 1
-                   
-                    
+                                       
                     if j < len(numbers) - 1 and i == j:
                    
                         j += 1
