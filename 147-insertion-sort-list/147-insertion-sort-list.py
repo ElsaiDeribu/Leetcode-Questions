@@ -21,4 +21,30 @@ class Solution:
             j = i.next
             
         return newhead
+    
+ #         prev, j, i = None, head, head
+        
+#         while i:
+#             while j.next:
+                
+#                 if j.next.val < i.val:
+#                     temp = j.next
+#                     # print(temp)
+#                     j.next = j.next.next
+#                     temp.next = i
+#                     if prev:
+#                         prev.next = temp
+#                     i = temp
+#                     if not prev:
+#                         head = i
+#                     j = i
+                    
+                     
+#                 j = j.next
+#             prev = i
+#             i = i.next
+#             j = i
+            
+#         return head
+                    
             
