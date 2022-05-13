@@ -1,14 +1,14 @@
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
         
+        # O(n) Solution
+        
         temp = set(nums)
         nums = list(temp)
         
         if len(nums) < 3:
             return max(nums)
         
-        print(nums)
-     
         
         lst = []
         
