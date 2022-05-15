@@ -14,8 +14,7 @@ class Solution:
                 coord = (r + i[0], c + i[1])
                 if 0 <= coord[0] < row and 0 <= coord[1] < col:
                     if coord not in visited and image[coord[0]][coord[1]] == prevColor :
-                        if image[coord[0]][coord[1]] == prevColor:
-                            image[coord[0]][coord[1]] = newColor
+                        image[coord[0]][coord[1]] = newColor
                         dfs(row, col, prevColor, newColor, visited, image, coord[0], coord[1])
                     
                 
