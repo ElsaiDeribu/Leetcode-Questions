@@ -4,7 +4,7 @@ class Solution:
         ans =[]
         
         for i in order:
-            while dictionary[i] != 0:
+            while dictionary[i] != 0: 
                 ans.append(i)
                 dictionary[i] -= 1
                 
