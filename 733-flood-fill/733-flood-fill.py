@@ -16,8 +16,7 @@ class Solution:
                     if coord not in visited and image[coord[0]][coord[1]] == prevColor :
                         image[coord[0]][coord[1]] = newColor
                         dfs(row, col, prevColor, newColor, visited, image, coord[0], coord[1])
-                    
-                
+                            
             
         dfs(row, col, prevColor, newColor, visited, image, sr, sc)
         
