@@ -14,7 +14,7 @@ class Solution:
         def dfs(count, n):
             count += 1
 
-            ans = -float("inf")
+            ans = 0
             for i in n.children:
                 ans = max(ans, dfs(count, i))
            
