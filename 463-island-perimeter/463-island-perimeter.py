@@ -1,0 +1,39 @@
+class Solution:
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        
+        def findIsland(matrix):
+            for i in range(len(matrix)):
+                for j in range(len(matrix[i])):
+                    if matrix[i][j] == 1:
+                        return(i,j)
+                
+        
+        direction = [(1,0),(0,1),(-1,0),(0,-1) ]
+        temp = findIsland(grid)
+        r = temp[0]
+        c = temp[1]
+        row = len(grid)
+        col = len(grid[0])
+        visited = set()
+        self.perimeter = 0
+         
+        
+        def dfs(direction, row, col, r, c, visited):
+            
+                visited.add((r, c))
+                for i in direction:
+                    coord = (r + i[0], c + i[1])
+                    if (coord[0],coord[1]) not in visited:
+                        if 0 <= coord[0] < row and 0 <= coord[1] < col and grid[coord[0]][coord[1]] == 1:
+                            dfs(direction, row, col, coord[0], coord[1], visited)
+
+                        elif row <= coord[0] or coord[0] < 0 or col <= coord[1] or coord[1]  < 0:
+                            self.perimeter += 1
+                            
+                        elif grid[coord[0]][coord[1]] == 0:
+                            self.perimeter += 1
+                        
+                
+        dfs(direction, row, col, r, c, visited)
+        
+        return self.perimeter
