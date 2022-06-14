@@ -1,12 +1,16 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
         count = Counter(nums)
-        count = {k:v for k, v in sorted(count.items(), key = lambda v: v[1], reverse = True )}
-        iter = 0
+        
+        listOfTuples = []
         ans = []
+        
         for i in count:
-            if iter == k:
-                break
-            ans.append(i)
-            iter += 1
+            heappush(listOfTuples,(-1 * count[i], i) )
+            
+        while k:
+            ans.append(heappop(listOfTuples)[1])
+            k -= 1
+            
         return ans
