@@ -1,19 +1,19 @@
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        right = len(citations) - 1
-        left = 0
+        start = 0
+        end = len(citations) - 1
         h = 0
         
-        while left <= right:
-            mid = left+(right - left) // 2
+        while start <= end:
             
-            if citations[mid] >= len(citations) - mid:
-                right = mid - 1 
-                h = max(h, len(citations) - mid )
+            mid = start + (end - start) // 2
+            
+            if citations[mid] >= (len(citations) - mid):
+                h = max(h, (len(citations) - mid) )
+                end = mid - 1
+                
             else:
-                left = mid + 1
+                
+                start = mid + 1
                 
         return h
-                
-        
-        
