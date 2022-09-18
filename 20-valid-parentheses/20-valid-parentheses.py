@@ -1,39 +1,40 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        class Stack:
-            def __init__(self):
-                self.st = []
-            def push(self, x ):
-                self.st.append(x)
-            def pop(self):
-                if len(self.st) > 0:
-                    self.st.pop()
-            def top(self):
-                if len(self.st) == 0:
-                    return None
-                return self.st[-1]
-            def print(self):
-                print(self.st)
-            def length(self):
-                return len(self.st)
-
-        dic = {'(' : ')', '{': '}', '[' :']'}
-        st = Stack()
-        for i in s:
-            if i in dic.keys():
-                st.push(i)
-   
+        
+        
+        st = []
+        temp = []
+        
+        dic = {'(':')', '[':']', '{':'}'}
+        
+        for i in range(len(s)):
             
-            else:
-                if st.length() != 0:
-                    if (dic[st.top()] == i):
-                        st.pop()
-                    else:
+            if s[i] in dic.values():
+                
+                while st and dic[st[-1]] != s[i]:
+                    if st[-1] in dic.keys() :
                         return False
+                        
+                    temp.append(st.pop())
+                
+                if st and dic[st[-1]] == s[i]:
+                    st.pop()
                 else:
                     return False
+                    
+                for i in temp:
+                    st.append(i)
+                    
+                temp = []
+            else:
+                st.append(s[i]) 
+   
                 
-        if st.length() != 0:
+        if st  :
             return False
+        else:
+            return True
+                
+                
+    
         
-        return True   
