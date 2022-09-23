@@ -6,6 +6,7 @@ class Solution:
         largest = 0
         
         while right < len(nums):
+            
             if nums[right] == 0 :
                 k -= 1
 
@@ -18,8 +19,3 @@ class Solution:
             right += 1
                     
         return largest
-                
-            
-   
-
-                
