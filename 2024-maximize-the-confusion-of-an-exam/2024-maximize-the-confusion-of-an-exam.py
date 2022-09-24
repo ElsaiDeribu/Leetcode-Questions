@@ -1,11 +1,14 @@
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
         
+        
         intruder = 0
         longest = 0
         l = 0
         r = 0
+        t = k
         
+
         while l < len(answerKey):
             
             while r < len(answerKey) and (intruder < k or answerKey[r] == 'T'):
