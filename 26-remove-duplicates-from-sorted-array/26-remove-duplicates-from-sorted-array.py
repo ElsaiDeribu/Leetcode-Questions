@@ -2,7 +2,6 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         
         
-        
         l = 1
         r = l
         visited = set()
