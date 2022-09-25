@@ -2,47 +2,43 @@ class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         
         
-        dictionary = {'a':0, 'b': 0, 'c':0}
-        count = 0
-        j = 0
-        
-        for i in range(len(s)):
-            
-            dictionary[s[i]] += 1
-            
-            while dictionary['a'] > 0 and dictionary['b'] > 0 and dictionary['c'] > 0:
-                
-                dictionary[s[j]] -= 1
-                j += 1
-                    
-            count += j
-            
-        return count
-                
-        
 #         dictionary = {'a':0, 'b': 0, 'c':0}
-#         # dictionary = defaultdict(int)
-        
-#         l = 0
-#         r = 0
 #         count = 0
+#         l = 0
         
-#         while r < len(s):
+#         for r in range(len(s)):
             
-#             while r < len(s) and (dictionary['a'] == 0 or dictionary['b'] == 0 or dictionary['c'] == 0):
-                
-#                 dictionary[s[r]] += 1
-#                 r += 1
+#             dictionary[s[r]] += 1
             
 #             while dictionary['a'] > 0 and dictionary['b'] > 0 and dictionary['c'] > 0:
                 
 #                 dictionary[s[l]] -= 1
 #                 l += 1
-                
+                    
 #             count += l
 #             print(count)
             
 #         return count
+                
+        
+        dictionary = {'a':0, 'b': 0, 'c':0}
+        l = 0
+        r = 0
+        count = 0
+            
+        while r < len(s):
+            
+            dictionary[s[r]] += 1
+
+            while (dictionary['a'] > 0 and dictionary['b'] > 0 and dictionary['c'] > 0):
+                dictionary[s[l]] -= 1
+                l += 1
+                    
+            count += l
+            r += 1
+
+
+        return count
                     
                 
                 
