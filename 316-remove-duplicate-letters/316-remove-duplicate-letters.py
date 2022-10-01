@@ -16,10 +16,10 @@ class Solution:
                 st.pop()
                 
                 
-            if visited[i] == 0:
-                st.append(i)
-                visited[i] = 1
-                freq[i] -= 1
+            # if visited[i] == 0:
+            st.append(i)
+            visited[i] = 1
+            freq[i] -= 1
                 
             # else:
             #     freq[i] -= 1
