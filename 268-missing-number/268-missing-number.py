@@ -2,14 +2,22 @@ class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         
         
-        
-        nums.sort()
-        
+        count = Counter(nums)
         
         for i in range(len(nums) + 1):
-            if i == len(nums):
-                return i
+            count[i] -= 1
             
-            if nums[i] != i:
+        for i in count.keys():
+            if count[i] == -1:
                 return i
+        
+        
+        
+#         nums.sort()
+#         for i in range(len(nums) + 1):
+#             if i == len(nums):
+#                 return i
+            
+#             if nums[i] != i:
+#                 return i
         
