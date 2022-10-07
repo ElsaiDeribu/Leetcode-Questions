@@ -1,12 +1,8 @@
 class Solution:
     def chalkReplacer(self, chalk: List[int], k: int) -> int:
         
-        total = sum(chalk)
+        usage = list(accumulate(chalk))
+        k %= usage[-1]
         
-        lastRoundKLeft = k % total
-        
-        for i in range(len(chalk)):
-            lastRoundKLeft -= chalk[i]
-            if lastRoundKLeft < 0:
-                return i
+        return bisect.bisect_right(usage,k)
         
