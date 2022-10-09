@@ -17,5 +17,7 @@ class Solution:
                 
             else:
                 
-                return [nums[start][1], nums[end][1]]
-        
+                return [nums[start][1], nums[end][1]]          
+    
+            
+            
