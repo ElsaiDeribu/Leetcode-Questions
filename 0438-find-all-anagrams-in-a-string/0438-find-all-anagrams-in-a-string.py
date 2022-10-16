@@ -14,14 +14,10 @@ class Solution:
             j = i
         
         
-        # print(j)
-        # print(subarr)
-        
         k = 0
         
         while j < len(s):
 
-            
             if subarr == count:
                 ans.append(k)
                 
@@ -33,41 +29,11 @@ class Solution:
             if j < len(s):
                 subarr[s[j]] += 1
 
-            
-            
         return ans
             
         
         
         
-        
-        
-        
-#         count = Counter(p)
-#         ans = []
-#         i = 0
-#         j = 0
-        
-#         while j < len(s):
-#             n = len(p)
-#             count1 = count.copy()
-#             j = i
-            
-#             while j < len(s) and  count1[s[j]] >= 1 :
-                
-#                 count1[s[j]] -= 1
-#                 n -= 1
-                
-#                 if n == 0:
-#                     ans.append(i)
-#                     break
-                    
-#                 j += 1
-                
-#             i += 1
-                
-                
-#         return ans
                 
             
 
