@@ -12,5 +12,5 @@ class Solution:
             elif logs[i] == "../" and count > 0:
                 count -= 1
                 
-        return count if count > 0 else 0
+        return count
         
