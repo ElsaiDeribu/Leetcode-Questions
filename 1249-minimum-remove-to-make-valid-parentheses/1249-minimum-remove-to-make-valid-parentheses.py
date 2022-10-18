@@ -22,7 +22,6 @@ class Solution:
                     count[')'] -= 1
 
                     
-                    
             if s[i] != '(' and  s[i] != ')':
                 ans.append(s[i])
                 
