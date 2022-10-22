@@ -3,6 +3,8 @@ class Solution:
         
         s2 = ""
         nums = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+        
+        
         for i in range(len(s)):
             
             if ord('a') <= ord(s[i].lower()) <= ord('z') or (s[i] in nums):
