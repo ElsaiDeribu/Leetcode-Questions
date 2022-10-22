@@ -2,12 +2,10 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         
         s2 = ""
-        nums = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
-        
         
         for i in range(len(s)):
             
-            if ord('a') <= ord(s[i].lower()) <= ord('z') or (s[i] in nums):
+            if ord('a') <= ord(s[i].lower()) <= ord('z') or ( ord('0') <= ord(s[i]) <= ord('9')):
                 
                 s2 += s[i].lower()
                 
@@ -23,6 +21,7 @@ class Solution:
             r -= 1
             
         return True
+
         
         
         
