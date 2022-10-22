@@ -6,7 +6,6 @@ class Solution:
         for i in range(len(s)):
             
             if ord('a') <= ord(s[i].lower()) <= ord('z') or ( ord('0') <= ord(s[i]) <= ord('9')):
-                
                 s2 += s[i].lower()
                 
                 
