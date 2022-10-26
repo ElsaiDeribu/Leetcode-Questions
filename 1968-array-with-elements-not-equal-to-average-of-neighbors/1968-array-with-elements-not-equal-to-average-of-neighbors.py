@@ -1,28 +1,26 @@
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
         
-        nums.sort()
         ans = []
-        left = 0
-        right = len(nums) - 1
         
-        while left <= right:
+        nums.sort()
+        
+        l = 0
+        r = len(nums) - 1
+        
+        
+        while l <= r:
             
-            if left == right:
-                ans.append(nums[left])
+            if l == r:
+                ans.append(nums[r])
                 break
+                    
+            ans.append(nums[l])
+            l += 1
             
-            ans.append(nums[left])
-            left += 1
+            ans.append(nums[r])
+            r -= 1
             
-            ans.append(nums[right])
-            right -= 1
             
-        return (ans)
-        
-        
-        
-        
-        
-
-    
+            
+        return ans
