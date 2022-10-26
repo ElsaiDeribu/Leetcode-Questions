@@ -1,12 +1,11 @@
-class Solution(object):
-    def targetIndices(self, nums, target):
-        for i in range (len(nums)):
-            for j in range(i+1, len(nums)):
-                 if nums[i] > nums[j]:
-                         nums[i], nums[j] = nums[j], nums[i]
-                
-        occurence =[]
-        for k in  range(len(nums)): 
-            if nums[k] == target:
-                occurence.append(k)
-        return occurence
+class Solution:
+    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+        
+        ans = []
+        nums.sort()
+        
+        for i in range(len(nums)):
+            if nums[i] == target:
+                ans.append(i)
+        
+        return ans
