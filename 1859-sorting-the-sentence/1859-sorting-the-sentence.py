@@ -1,19 +1,20 @@
 class Solution:
     def sortSentence(self, s: str) -> str:
         
-        s = s.split()
+        sliced = s.split()
         
-        for i in range(len(s)): 
-            s[i] = (s[i][-1], s[i][:-1])
+        
+        for i in range(len(sliced)):
             
-        s.sort()
-        
-        for i in range(len(s)): 
-            s[i] = s[i][1]
-        
-        return ' '.join(s)
-        
+            sliced[i] = (int(sliced[i][-1]), sliced[i][:-1])
             
             
+        sliced.sort()
         
-          
+        for i in range(len(sliced)):
+            sliced[i] = sliced[i][1]
+            
+        
+        return " ".join(sliced)
+            
+        
