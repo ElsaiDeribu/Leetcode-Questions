@@ -1,30 +1,29 @@
 class Solution:
     def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
         
-        def helper(arr, maximum):
+        def helper(mx):
             
-            dic = defaultdict(int)
-            count = 0
+            subArr = 0
             i = j = 0
-            dic[nums[j]] = 1
             
+            windowElements = defaultdict(int)
             
             while j < len(nums):
                 
-                while len((dic)) > maximum:
-                    dic[nums[i]] -= 1
-                    if dic[nums[i]] == 0:
-                        dic.pop(nums[i])
+                windowElements[nums[j]] += 1
+                
+                while len(windowElements) > mx:
+                    windowElements[nums[i]] -= 1
+                    if windowElements[nums[i]] == 0:
+                        windowElements.pop(nums[i])
                     i += 1
-                    
-                count += (j - i + 1)
+                
+                subArr += (j - i + 1)
+                
                 j += 1
-                if j < len(nums):
-                    dic[nums[j]] += 1
-            
-            return count
+            return subArr
         
+        return helper(k) - helper(k - 1)
         
-        return helper(nums, k) - helper(nums, k - 1)
         
             
