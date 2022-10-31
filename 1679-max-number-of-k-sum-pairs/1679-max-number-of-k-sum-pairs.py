@@ -5,7 +5,7 @@ class Solution:
         j = len(nums) - 1
         count = 0
         nums.sort()
-        print(nums)
+        
         while i < j:
             if nums[i] + nums[j] > k:
                 j -= 1
