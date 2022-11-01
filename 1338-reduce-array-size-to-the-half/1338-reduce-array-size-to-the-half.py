@@ -1,13 +1,23 @@
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
-        removedElements = 0
-        removedSize = 0
-        H = len(arr)//2
-        counts = Counter(arr)
-        print(counts)
-        for i, j in sorted(counts.items(), key=lambda k:k[1], reverse=True): 
-            if removedSize >= H:
-                break
-            removedSize +=j
-            removedElements += 1
-        return removedElements
+        
+        
+        length = len(arr) 
+        
+        ans = 0
+        countToRemove = 0
+        arr = Counter(arr)
+        
+        arr = sorted(arr.items(), key = lambda x: x[1])
+        
+        for i in range(len(arr) - 1, -1, -1):
+            
+            countToRemove += arr[i][1]
+            ans += 1
+
+            if length - countToRemove <= length / 2:
+                return ans
+            
+            
+        
+        
