@@ -9,35 +9,35 @@ class Solution:
             
             if dominoes[i] == "R":
                 f = len(dominoes)
-            
             elif dominoes[i] == "L":
                 f = 0
-                
             else:
                 f = max(f - 1, 0)
-            
+                
             forces[i] += f
         
-
-        for j in range(len(dominoes) - 1, -1, -1):
+        f = 0
             
-            if dominoes[j] == "L":
-                f = len(dominoes)
-                
-            elif dominoes[j] == "R":
+        for j in range(len(dominoes) - 1, -1 , -1):
+            
+            if dominoes[j] == "R":
                 f = 0
-                
-            else:
+            elif dominoes[j] == "L":
+                f = len(dominoes)
+            
+            else: 
                 f = max(f - 1, 0)
                 
             forces[j] -= f
-                
-        for i in forces:
-            if i == 0:
+           
+            
+        for i in range(len(dominoes)):
+            
+            if forces[i] == 0:
                 ans += "."
-            elif i < 0:
+            elif forces[i] < 0:
                 ans += "L"
-            elif i > 0:
+            elif forces[i] > 0:
                 ans += "R"
                 
                 
