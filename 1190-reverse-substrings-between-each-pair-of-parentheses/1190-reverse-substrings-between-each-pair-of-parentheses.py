@@ -1,23 +1,25 @@
 class Solution:
     def reverseParentheses(self, s: str) -> str:
         
-        stack = []
-        toBeReversed = ""
+        st = []
         
-        for i in s:
-            if i == ")":
-                top = stack.pop()
-                while top != "(":
-                    toBeReversed += top
-                    top = stack.pop()
+        for i in range(len(s)):
+            
+            if s[i] != ')':
                 
-                for j in toBeReversed:
-                    stack.append(j)
-                    
-                toBeReversed = ""
+                st.append(s[i])
+                
             else:
-                stack.append(i)
-            
-        return ''.join(stack)
-            
+                temp = []
+                
+                while st[-1] != '(':
+                    temp.append(st[-1])
+                    st.pop()
+                    
+                st.pop()
+                    
+                for i in temp:
+                    st.append(i)
+          
         
+        return ''.join(st)
