@@ -15,11 +15,9 @@ class Solution:
         st = st[i:]
         
         
-        # if len(st) == 1 and k:
-        #     return "0"
-        
         if k:
             st = st[:len(st) - k]
+            
         
         return ''.join(st) if len(st) > 0  else "0"
         
