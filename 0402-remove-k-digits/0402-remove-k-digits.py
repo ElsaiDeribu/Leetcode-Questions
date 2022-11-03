@@ -15,8 +15,8 @@ class Solution:
         st = st[i:]
         
         
-        if len(st) == 1 and k:
-            return "0"
+        # if len(st) == 1 and k:
+        #     return "0"
         
         if k:
             st = st[:len(st) - k]
