@@ -3,7 +3,6 @@ class Solution:
         
         st = []
         
-        
         for i in range(len(s)):
             
             if s[i] == 'c' and len(st) >= 2:
