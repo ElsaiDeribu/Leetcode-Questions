@@ -12,6 +12,6 @@ class Solution:
                 
             st.append((i, prices[i]))
             
-            
+        
         return ans
             
