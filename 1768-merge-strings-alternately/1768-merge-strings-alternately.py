@@ -6,7 +6,6 @@ class Solution:
         i = 0
         j = 0
         
-        
         while len(merged) < (len(word1) + len(word2)):
                 
                 if i < len(word1):
