@@ -11,9 +11,6 @@ class Solution:
                 l += 1
                 if l < len(nums):
                     sumation += nums[l]
-            
-            print(nums[:l])
-            print(sumation)
             ans.append(len(nums[:l]))
             
         return ans
