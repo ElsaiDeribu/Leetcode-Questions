@@ -15,6 +15,5 @@ class Solution:
                 if j - i >= 3:
                     ans.append([i, j - 1])
                     
-        ans.sort()
         
         return ans
