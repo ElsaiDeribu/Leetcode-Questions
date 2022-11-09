@@ -11,8 +11,6 @@ class Solution:
             if j == len(s) or  (j < len(s) and s[i] != s[j]):
                 if j - i >= 3:
                     ans.append([i, j - 1])
-            # elif j == len(s):
-            #     if j - i >= 3:
-            #         ans.append([i, j - 1])
+        
                     
         return ans
