@@ -13,8 +13,9 @@ class Solution:
                     conv += 1
                 l += 1
             
-            maxTLen = max(maxTLen, r - l + 1)
             r += 1
+            maxTLen = max(maxTLen, r - l )
+
             
             
         conv = k            
@@ -28,8 +29,9 @@ class Solution:
                     conv += 1
                 l += 1
             
-            maxFLen = max(maxFLen, r - l + 1)
             r += 1      
+            maxFLen = max(maxFLen, r - l )
+
             
             
         return max(maxTLen, maxFLen)
