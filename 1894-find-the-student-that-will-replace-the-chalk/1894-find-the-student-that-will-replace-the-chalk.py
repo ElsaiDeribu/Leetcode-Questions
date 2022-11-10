@@ -1,12 +1,11 @@
 class Solution:
     def chalkReplacer(self, chalk: List[int], k: int) -> int:
         
-        total = sum(chalk)
-        
-        remainingChalk = k % total
+        lastRoundChalks = k % sum(chalk)
         
         for i in range(len(chalk)):
-            remainingChalk -= chalk[i]
-            if remainingChalk < 0:
+            if chalk[i] > lastRoundChalks:
                 return i
+            
+            lastRoundChalks -= chalk[i]
         
