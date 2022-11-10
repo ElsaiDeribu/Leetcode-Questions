@@ -1,47 +1,35 @@
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
         
+        maxTLen, maxFLen, l, r = 0, 0, 0, 0
+        conv = k
         
-        intruder = 0
-        longest = 0
-        l = 0
-        r = 0
-        t = k
-        
-
-        while l < len(answerKey):
-            
-            while r < len(answerKey) and (intruder < k or answerKey[r] == 'T'):
-                if answerKey[r] != 'T':
-                    intruder += 1
+        while r < len(answerKey):
+            if answerKey[r] == 'F':
+                conv -= 1
                     
-                r += 1
+            while conv < 0:
+                if answerKey[l] == 'F':
+                    conv += 1
+                l += 1
             
-            longest =  max(longest, r - l ) 
-            
-            if answerKey[l] != 'T':
-                intruder -= 1
-        
-            l += 1
+            maxTLen = max(maxTLen, r - l + 1)
+            r += 1
             
             
-        intruder = 0
-        l = 0
-        r = 0
-        while l < len(answerKey):
-            
-            while r < len(answerKey) and (intruder < k or answerKey[r] == 'F'):
-                if answerKey[r] != 'F':
-                    intruder += 1
+        conv = k            
+        l, r = 0, 0    
+        while r < len(answerKey):
+            if answerKey[r] == 'T':
+                conv -= 1
                     
-                r += 1
+            while conv < 0:
+                if answerKey[l] == 'T':
+                    conv += 1
+                l += 1
             
-            longest =  max(longest, r - l ) 
-            
-            if answerKey[l] != 'F':
-                intruder -= 1
-                
-            l += 1
+            maxFLen = max(maxFLen, r - l + 1)
+            r += 1      
             
             
-        return longest
+        return max(maxTLen, maxFLen)
