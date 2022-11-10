@@ -8,8 +8,7 @@ class Solution:
         
         while r < len(nums):
             subarrSum += nums[r]
-            
-            while l <= r and subarrSum >= target:
+            while subarrSum >= target:
                 minLength = min(minLength, r - l + 1)
                 subarrSum -= nums[l]
                 l += 1
