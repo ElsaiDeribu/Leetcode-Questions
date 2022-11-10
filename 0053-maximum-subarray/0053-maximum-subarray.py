@@ -10,7 +10,6 @@ class Solution:
         for i in range(1, len(nums)):
             prefSum[i] = prefSum[i - 1] + nums[i]
         
-        # print(prefSum)
         
         largestSum = -10**6
         minleftSum = 0
