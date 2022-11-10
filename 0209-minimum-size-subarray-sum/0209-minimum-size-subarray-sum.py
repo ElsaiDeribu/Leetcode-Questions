@@ -1,32 +1,19 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-                
-            i = 0
-            j = 0
-            minLength = 10**9
-            windowSum = nums[i]
-
-
-            while j < len(nums):
-                
-                if minLength == 1:
-                    return minLength
-                
-                while j < len(nums) and windowSum < target:
-                    j += 1
-                    if j < len(nums):
-                        windowSum += nums[j]
-
-                if windowSum >= target:
-                    minLength = min(minLength, j - i + 1)
-
-                while i < j and windowSum >= target:
-                    windowSum -= nums[i]
-                    i += 1
-                    if windowSum >= target:
-                        minLength = min(minLength, j - i + 1)
-                        
-            if minLength == 10**9:
-                return 0
-            return minLength
         
+        l = 0
+        r = 0
+        subarrSum = 0
+        minLength = 10 ** 6
+        
+        while r < len(nums):
+            subarrSum += nums[r]
+            
+            while l <= r and subarrSum >= target:
+                minLength = min(minLength, r - l + 1)
+                subarrSum -= nums[l]
+                l += 1
+                
+            r += 1
+        
+        return 0 if minLength == 10**6 else minLength
