@@ -9,9 +9,9 @@ class Solution:
             for j in range(i + 1, len(nums) - 1):
                 for k in range(j + 1, len(nums)):
                     
-                    if nums[j] - nums[i] == nums[k] - nums[j] == diff and (nums[i], nums[j], nums[k]) not in visited:
+                    if nums[j] - nums[i] == nums[k] - nums[j] == diff:
                         
-                        visited.add((nums[i], nums[j], nums[k]))
+                        # visited.add((nums[i], nums[j], nums[k]))
                         count += 1
                         
         return count
