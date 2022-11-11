@@ -9,7 +9,7 @@ class Solution:
             if nums[r] == 0:
                 k -= 1
             
-            while l <= r and k < 0:
+            while k < 0:
                 if nums[l] == 0:
                     k += 1
                 l += 1
