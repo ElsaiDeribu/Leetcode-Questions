@@ -21,30 +21,30 @@ class Solution:
 
 #         return ans
 
+        l = 0
+        windowCount = 0
+        minWinCount = 10**6
 
-            l = 0
-            windowCount = 0
-            minWinCount = 10**6
+        for i in range(k):
+            if blocks[i] == 'W':
+                windowCount += 1
+        r = i
 
-            for i in range(k):
-                if blocks[i] == 'W':
-                    windowCount += 1
-            r = i
+        minWinCount = min(minWinCount, windowCount)
 
-            minWinCount = min(minWinCount, windowCount)
+        while r < len(blocks):
+            r += 1
+            if r < len(blocks) and blocks[r] == 'W':
+                windowCount += 1
 
-            while r < len(blocks):
-                r += 1
-                if r < len(blocks) and blocks[r] == 'W':
-                    windowCount += 1
+            if blocks[l] == 'W':
+                windowCount -= 1
+            l += 1
 
-                if blocks[l] == 'W':
-                    windowCount -= 1
-                l += 1
+            if r < len(blocks):
+                minWinCount = min(minWinCount, windowCount)
 
-                if r < len(blocks):
-                    minWinCount = min(minWinCount, windowCount)
+        return minWinCount
 
-            return minWinCount
 
         
