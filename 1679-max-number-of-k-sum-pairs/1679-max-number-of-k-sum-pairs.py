@@ -1,28 +1,26 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
         
-        i = 0
-        j = len(nums) - 1
-        count = 0
         nums.sort()
-        
-        while i < j:
-            if nums[i] + nums[j] > k:
-                j -= 1
-                
-            if nums[i] + nums[j] < k:
-                i += 1
-                
-            if i < j and nums[i] + nums[j] == k:
-                count += 1
-                i += 1
-                j -= 1
+        operations = 0
+        l = 0
+        r = len(nums) - 1
         
         
-        return count
+        while l < r:
+            twoSum = nums[l] + nums[r]
+            if twoSum > k:
+                r -= 1
+            elif twoSum < k:
+                l += 1
+            else:
+                operations += 1
+                l += 1
+                r -= 1
                 
-                
-                
+        return operations
+        
+            
             
             
         
