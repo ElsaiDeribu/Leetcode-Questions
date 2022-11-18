@@ -1,27 +1,20 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         
-        l = r = 0
-        minimalLen = 10**6
-        subArrSum = nums[0]
-        
-        while r < len(nums):
-            while subArrSum >= target:
-                minimalLen = min(minimalLen, r - l + 1)
-                subArrSum -= nums[l]
+        minLength = 10**6
+        subSum = 0
+        l = 0
+        for r in range(len(nums)):
+            subSum += nums[r]
+            while subSum - nums[l] >= target:
+                subSum -= nums[l]
                 l += 1
                 
-            r += 1
-            if r < len(nums):
-                subArrSum += nums[r]
-            
-        return 0 if minimalLen == 10**6 else minimalLen
+            if subSum >= target:
+                minLength = min(minLength, r - l + 1)
         
         
-        
-        
-        
-        
+        return minLength if minLength != 10**6 else 0
         
         
         
