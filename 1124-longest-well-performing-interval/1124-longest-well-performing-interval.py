@@ -2,7 +2,6 @@ class Solution:
     def longestWPI(self, hours: List[int]) -> int:
 
         prefixes = defaultdict(int)
-        # prefixes[0] = -1
         sumUpToNow = 0
         longest = 0
         
