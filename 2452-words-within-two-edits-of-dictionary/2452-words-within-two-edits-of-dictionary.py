@@ -14,7 +14,7 @@ class Solution:
                     ans.append(queries[i])
                     break
         
-        return list(ans)
+        return ans
                         
                     
                 
