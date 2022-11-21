@@ -7,7 +7,7 @@ class Solution:
         for i in range(len(nums)):
             sumUpToNow += 1 if nums[i] else -1
             if sumUpToNow == 0:
-                longest = max(longest, i + 1)
+                longest = i + 1
             elif sumUpToNow in prefixes:
                 longest = max(longest, i - prefixes[sumUpToNow])
             if sumUpToNow not in prefixes:
