@@ -16,5 +16,4 @@ class Solution:
             if r - l + 1 == k:
                 ans.append(windowElements[0])
             
-            
         return ans
