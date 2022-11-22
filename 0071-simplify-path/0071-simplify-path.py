@@ -12,11 +12,9 @@ class Solution:
                 
             elif path2[i] == "." or path2[i] == "":
                 continue
-                
             else:
                 st.append(path2[i])
-        
-        # print(st)
+                
         return '/' + '/'.join(st)
             
             
