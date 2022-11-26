@@ -4,7 +4,7 @@ class Solution:
         st = []
         ans = [0] * len(heights)
             
-        for i in reversed(range(len(heights))):
+        for i in range(len(heights) - 1, -1, -1):
             count = 0
             
             while st and st[-1] < heights[i]:
