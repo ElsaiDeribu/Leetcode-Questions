@@ -13,7 +13,6 @@ class Solution:
             
             if st:
                 ans[i] = count + 1
-                
             else:
                 ans[i] = count
                 
