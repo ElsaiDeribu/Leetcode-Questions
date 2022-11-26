@@ -7,7 +7,7 @@ class Solution:
         for i in reversed(range(len(heights))):
             count = 0
             
-            while st and st[-1][0] < heights[i]:
+            while st and st[-1] < heights[i]:
                 count += 1
                 st.pop()
             
@@ -17,7 +17,7 @@ class Solution:
             else:
                 ans[i] = count
                 
-            st.append((heights[i], i))
+            st.append(heights[i])
             
             
         return ans
