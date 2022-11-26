@@ -2,7 +2,7 @@ class Solution:
     def canSeePersonsCount(self, heights: List[int]) -> List[int]:
         
         st = []
-        ans = []
+        ans = [0] * len(heights)
             
         for i in reversed(range(len(heights))):
             count = 0
@@ -12,12 +12,13 @@ class Solution:
                 st.pop()
             
             if st:
-                ans.append(count + 1)
+                ans[i] = count + 1
                 
             else:
-                ans.append(count)
+                ans[i] = count
+                
             st.append((heights[i], i))
             
             
-        return ans[::-1]
+        return ans
         
