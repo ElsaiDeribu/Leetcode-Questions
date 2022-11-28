@@ -1,7 +1,7 @@
 class Solution:
     def minimumTime(self, time: List[int], totalTrips: int) -> int:
         l = 0
-        r = 10 ** 20
+        r = 10 ** 15
         
         def getTripsAt(sec):
             count = 0
