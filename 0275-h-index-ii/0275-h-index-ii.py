@@ -13,7 +13,7 @@ class Solution:
             else:
                 r = mid
                 
-        return n - l
+        return n - l 
         
 
                 
