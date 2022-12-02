@@ -16,14 +16,12 @@ class Solution:
             return d 
         
 
-        ans = 0
         while l <= r:
             mid = (l + r) // 2
             
             if takesTooManyDays(mid) > days:
                 l = mid + 1
             else:
-                ans = mid
                 r = mid - 1
                 
-        return ans
+        return r + 1
