@@ -19,7 +19,8 @@ class Solution:
             
         
         
-        # O(m log(n) )
+        # O(mlog(n) ) solution
+        
         def binSearch(row):
             l = -1
             r = len(matrix[0])
