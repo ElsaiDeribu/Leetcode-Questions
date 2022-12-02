@@ -3,7 +3,6 @@ class Solution:
         
         r = len(matrix) - 1
         c = 0
-
         
         while 0 <= r < len(matrix) and 0 <= c < len(matrix[0]):
             
