@@ -12,7 +12,7 @@ class Solution:
             else:
                 r = mid 
                 
-        return r
+        return l
                 
                 
             
