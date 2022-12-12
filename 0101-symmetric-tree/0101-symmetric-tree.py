@@ -12,13 +12,13 @@ class Solution:
             for i in range(len(deq) // 2):
                 if not deq[i] and deq[-i - 1]:
                     return False
-                
                 if deq[i] and not deq[-i - 1]:
                     return False
-                    
                 if (deq[i] and deq[-i - 1]) and deq[i].val != deq[-i - 1].val:
                     return False
             return True
+        
+        
         
         while deq:
             if not ispal():
