@@ -12,7 +12,6 @@ class Solution:
                 
                 elif order.index(w1[i]) < order.index(w2[i]):
                     return True
-                
             if len(w1) < len(w2):
                 return True
                 
@@ -20,9 +19,7 @@ class Solution:
             for j in range(i + 1, len(words)):
                 if not isOrdered(words[i], words[j]):
                     words[i], words[j] = words[j], words[i]
-        
-        print(temp)
-        print(words)
+
                     
         return temp == words
             
