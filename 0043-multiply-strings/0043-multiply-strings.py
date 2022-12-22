@@ -1,33 +1,33 @@
 class Solution:
     def multiply(self, num1: str, num2: str) -> str:
         
-        revnum1 = num1[::-1]
-        revnum2 = num2[::-1]
+        reversed_num1 = num1[::-1]
+        reversed_num2 = num2[::-1]
         zero = ''
-        productRows = []
+        product_rows = []
         
-        for i in range(len(revnum1)):
+        for i in range(len(reversed_num1)):
             sProd = ""
-            rem = ""
-            for j in range(len(revnum2)):
+            remainder = ""
+            for j in range(len(reversed_num2)):
                 
-                if rem:
-                    prod = str(int(revnum1[i]) * int(revnum2[j]) + int(rem))
-                    rem = ""
+                if remainder:
+                    prod = str(int(reversed_num1[i]) * int(reversed_num2[j]) + int(remainder))
+                    remainder = ""
                 else:
-                    prod = str(int(revnum1[i]) * int(revnum2[j]))
+                    prod = str(int(reversed_num1[i]) * int(reversed_num2[j]))
                     
-                if j < len(revnum2) - 1 and len(prod) >= 2 :
-                    rem = prod[0]
+                if j < len(reversed_num2) - 1 and len(prod) >= 2 :
+                    remainder = prod[0]
                     prod = prod[1]
                     
                 sProd = prod + sProd
             
             if i:
                 zero += '0'
-                productRows.append(sProd + zero)
+                product_rows.append(sProd + zero)
             
             else:
-                productRows.append(sProd)
+                product_rows.append(sProd)
             
-        return str(sum(map(int,productRows) ))
+        return str(sum(map(int,product_rows) ))
