@@ -10,21 +10,8 @@ class Solution:
         null_seen = False
         deq = Deque([root])
         
-        
-        def printLevel():
-            temp = []
-            
-            for i in deq:
-                if i == "null":
-                    temp.append(i)
-                else:
-                    temp.append(i.val)
-        
-            print(temp)
-            
             
         while deq:
-            printLevel()
             
             for _ in range(len(deq)):
                 curr_node = deq.popleft()
