@@ -27,7 +27,6 @@ class Solution:
             node.left = construct(pre[1 :splitIndex])
             node.right = construct(pre[splitIndex :])
             
-            
             return node
             
         return construct(preorder)
