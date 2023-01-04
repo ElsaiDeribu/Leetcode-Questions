@@ -15,19 +15,18 @@ class Solution:
                 return []
         
         
-            if not node.right and not node.left: 
+            if not node.right and not node.left:
                 return [1]
             
             leftDistanceList = findGoodPairs(node.left)
             rightDistanceList = findGoodPairs(node.right)
-             
-            if leftDistanceList and rightDistanceList:
-                for leftItem in leftDistanceList:
-                    for rightItem in rightDistanceList:
-                        if leftItem + rightItem <= distance:
-                            self.count += 1
-                            
-                            
+  
+            for leftItem in leftDistanceList:
+                for rightItem in rightDistanceList:
+                    if leftItem + rightItem <= distance:
+                        self.count += 1
+
+
             for i in range(len(leftDistanceList)):
                 leftDistanceList[i] += 1
                 
