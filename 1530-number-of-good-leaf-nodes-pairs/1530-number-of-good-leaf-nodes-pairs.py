@@ -15,7 +15,7 @@ class Solution:
                 return []
         
         
-            if not node.right and not node.left:
+            if not node.right and not node.left: 
                 return [1]
             
             leftDistanceList = findGoodPairs(node.left)
