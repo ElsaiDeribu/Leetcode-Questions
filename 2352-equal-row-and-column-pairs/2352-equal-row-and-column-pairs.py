@@ -1,24 +1,25 @@
 class Solution:
     def equalPairs(self, grid: List[List[int]]) -> int:
         
-        count = 0
+        n = len(grid)
+        cols = [[0] * n for i in range(n)] 
+        countOfPairs = 0
         
-        def iterateOverCol(c):
-            temp = []
-            for k in range(len(grid)):
-                temp.append(grid[k][c])
-            return temp
         
-        cols = []
+        for i in range(n):
+            for j in range(n):
+                cols[j][i] = grid[i][j]
+        
         
         for i in range(len(grid)):
-            cols.append(iterateOverCol(i))
-        
-        
-        for j in range(len(grid)):
-            for t in range(len(grid)):
-                if grid[j] == cols[t]:
-                    count += 1
-
+            grid[i] = tuple(grid[i])
             
-        return count
+            
+        rowCount = Counter(grid)
+    
+    
+        for col in cols:
+            countOfPairs += rowCount[tuple(col)]
+        
+        
+        return countOfPairs 
