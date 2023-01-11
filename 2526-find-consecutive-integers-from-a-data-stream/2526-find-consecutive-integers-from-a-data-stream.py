@@ -4,7 +4,6 @@ class DataStream:
         self.value = value
         self.k = k
         self.count = 0
-        self.list = []
         
     def consec(self, num: int) -> bool:
         
@@ -14,13 +13,11 @@ class DataStream:
         else:
             self.count = 0
             
-            
         if self.count >= self.k:
             return True
         
         return False
         
-        self.list.append(num)
         
      
         
