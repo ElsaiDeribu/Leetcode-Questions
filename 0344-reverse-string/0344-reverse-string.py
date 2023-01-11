@@ -11,7 +11,10 @@ class Solution:
         
         
         while left < right:
-            s[left], s[right] = s[right], s[left]
+            # s[left], s[right] = s[right], s[left]
+            temp = s[left]
+            s[left] = s[right]
+            s[right] = temp
             
             right -= 1
             left += 1
