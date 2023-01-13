@@ -3,25 +3,18 @@ class Solution:
         
         prefixes = defaultdict(int)
         prefixes[0] = 1
-        sumUpToNow = 0
+        
+        currSum = 0
         count = 0
         
-        for i in range(len(arr)):
-            sumUpToNow  += arr[i]
+        for i in arr:
+            currSum += i
+            rem = currSum % 2
+            count += prefixes[1 - rem]
+            prefixes[rem] += 1
+        
+        mod = 10 ** 9 + 7
+        
+        return count % mod
             
-            if sumUpToNow % 2 in prefixes:
-                count += prefixes[sumUpToNow % 2]
-                
-            prefixes[sumUpToNow % 2] += 1
             
-        n = len(arr)
-        totalSub = n * (n + 1) / 2
-        
-        return int(totalSub - count) % (10**9 + 7)
-        
-        
-                
-
-                
-                
-        
