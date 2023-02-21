@@ -8,7 +8,7 @@ class Solution:
         
         ptr = head
         
-        while ptr and ptr.next:
+        while ptr:
             
             while ptr.next and ptr.val == ptr.next.val:
                 ptr.next = ptr.next.next
