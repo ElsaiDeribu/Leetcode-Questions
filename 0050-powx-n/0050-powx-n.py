@@ -25,7 +25,7 @@ class Solution:
         # DP solution
         
 
-        @cache
+        @lru_cache(None)
         def findPower(number, power):
             
             
