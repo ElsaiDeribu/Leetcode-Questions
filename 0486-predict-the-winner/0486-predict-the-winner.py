@@ -6,7 +6,7 @@ class Solution:
         p1, p2  = 0, 0
         turn = 1
         
-        # @cache
+        @cache
         def helper(left, right, turn):
             
             if left > right:
