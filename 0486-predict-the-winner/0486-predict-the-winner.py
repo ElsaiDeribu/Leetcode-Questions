@@ -6,25 +6,25 @@ class Solution:
         p1, p2  = 0, 0
         turn = 1
         
-        @cache
-        def helper(p1, p2, left, right, turn):
+        # @cache
+        def helper(left, right, turn):
             
             if left > right:
-                return True if p1 >= p2 else False
+                return 0
             
             
             if turn == 1:
                 
-                poss1 = helper(p1 + nums[left], p2, left + 1 , right, 2)
-                poss2 = helper(p1 + nums[right], p2, left, right - 1, 2)
+                poss1 = nums[left] + helper(left + 1 , right, 2)
+                poss2 = nums[right] + helper(left, right - 1, 2)
 
-                return poss1 or poss2
+                return max(poss1, poss2)
             
             else:
                 
-                poss1 = helper(p1, p2 + nums[left], left + 1 , right, 1)
-                poss2 = helper(p1, p2 + nums[right], left, right - 1, 1)
+                poss1 = -nums[left] + helper(left + 1 , right, 1)
+                poss2 = -nums[right] + helper(left, right - 1, 1)
 
-                return poss1 and poss2
+                return min(poss1, poss2)
                 
-        return helper(p1, p2, left, right, turn)
+        return helper(left, right, turn) >= 0
