@@ -5,7 +5,7 @@ class Solution:
         prefRow2 = list(accumulate(grid[1]))
         
         n = len(grid[0])
-        rob2Score = float("inf")
+        minimizedR2Score = float("inf")
         
         
         for i in range(n):
@@ -13,8 +13,8 @@ class Solution:
             upper = prefRow1[-1] - prefRow1[i]
             lower = prefRow2[i - 1]  if i > 0 else 0
             
-            temp = max(upper, lower)
-            rob2Score = min(rob2Score, temp)
+            choiceOfR2 = max(upper, lower)
+            minimizedR2Score = min(minimizedR2Score,  choiceOfR2)
 
             
-        return rob2Score
+        return  minimizedR2Score
