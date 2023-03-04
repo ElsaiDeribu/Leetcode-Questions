@@ -4,39 +4,13 @@ class Solution:
         if not nums:
             return [-1, -1]
         
-        left = -1
-        right = len(nums) - 1
+        first = bisect_left(nums, target)
         
+        first = first if first < len(nums) and nums[first] == target else -1
         
-        while left + 1 < right:
-            
-            mid = left + (right - left) // 2
-            
-            if nums[mid] >= target:
-                right = mid
-                
-            else:
-                left = mid
+        second = bisect_right(nums, target)
         
-        first = right if nums[right] == target else -1
-        
-        
-        left = 0
-        right = len(nums) 
-        
-        
-        while left + 1 < right:
-            
-            mid = left + (right - left) // 2
-            
-            if nums[mid] <= target:
-                left = mid
-                
-            else:
-                right = mid
-        
-        second = left if nums[left] == target else -1
-        
+        second = second - 1 if nums[second - 1] == target else -1
         
         return [first, second]
         
