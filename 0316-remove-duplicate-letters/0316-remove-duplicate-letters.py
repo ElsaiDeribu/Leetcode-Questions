@@ -8,17 +8,16 @@ class Solution:
         
         for i in range(len(s)):
             
-            
-            while stack and (stack[-1] > s[i] and count[stack[-1]] > 0) and s[i] not in stackElements:
-                temp = stack.pop()
-                stackElements.remove(temp) if temp in stackElements else None 
-
-
             if s[i] not in stackElements:
+                while stack and (stack[-1] > s[i] and count[stack[-1]] > 0):
+                    temp = stack.pop()
+                    stackElements.remove(temp) if temp in stackElements else None 
+
+             
                 stack.append(s[i])
                 count[s[i]] -= 1
                 stackElements.add(s[i])
-                
+
             else:
                 count[s[i]] -= 1
                 
