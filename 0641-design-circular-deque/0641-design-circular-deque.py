@@ -29,50 +29,46 @@ class MyCircularDeque:
 
     def deleteFront(self) -> bool:
         
-        temp = (self.front - 1) % len(self.myDeq)
+        front = (self.front - 1) % len(self.myDeq)
         
-        if self.myDeq[temp] == None:
-            return False
-        
-        else:
-            self.front = temp
+        if self.myDeq[front] != None:
+            self.front = front
             self.myDeq[self.front] = None
             return True
         
+        return False
+
 
     def deleteLast(self) -> bool:
         
-        temp = (self.last +  1) % len(self.myDeq)
+        last = (self.last +  1) % len(self.myDeq)
         
-        if self.myDeq[temp] == None:
-            return False
-        
-        else:
-            self.last = temp
+        if self.myDeq[last] != None:
+            self.last = last
             self.myDeq[self.last] = None
             return True
-        
+                    
+        return False
+
 
     def getFront(self) -> int:
                 
-        temp = (self.front - 1) % len(self.myDeq)
+        front = (self.front - 1) % len(self.myDeq)
         
-        if self.myDeq[temp] == None:
+        if self.myDeq[front] == None:
             return -1
         
-        
-        return self.myDeq[temp]
+        return self.myDeq[front]
 
         
     def getRear(self) -> int:
         
-        temp = (self.last + 1) % len(self.myDeq)
+        last = (self.last + 1) % len(self.myDeq)
         
-        if self.myDeq[temp] == None:
+        if self.myDeq[last] == None:
             return -1
         
-        
-        return self.myDeq[temp]
+        return self.myDeq[last]
         
 
     def isEmpty(self) -> bool:
@@ -80,7 +76,7 @@ class MyCircularDeque:
         last = (self.last + 1) % len(self.myDeq)
         front = (self.front - 1) % len(self.myDeq)
         
-        if self.myDeq[last] == None and self.myDeq[front] == None:
+        if self.myDeq[last] == None :
             return True
         
         
@@ -89,7 +85,7 @@ class MyCircularDeque:
 
     def isFull(self) -> bool:
         
-        if self.myDeq[self.front] != None and self.myDeq[self.last] != None:
+        if self.myDeq[self.front] != None :
             return True
         
         return False
