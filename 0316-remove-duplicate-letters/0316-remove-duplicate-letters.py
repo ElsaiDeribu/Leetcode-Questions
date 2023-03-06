@@ -11,7 +11,7 @@ class Solution:
             if s[i] not in stackElements:
                 while stack and (stack[-1] > s[i] and count[stack[-1]] > 0):
                     temp = stack.pop()
-                    stackElements.remove(temp) if temp in stackElements else None 
+                    stackElements.remove(temp)
 
              
                 stack.append(s[i])
