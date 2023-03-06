@@ -76,7 +76,7 @@ class MyCircularDeque:
         last = (self.last + 1) % len(self.myDeq)
         front = (self.front - 1) % len(self.myDeq)
         
-        if self.myDeq[last] == None :
+        if self.myDeq[last] == None or self.myDeq[front] == None:
             return True
         
         
@@ -85,7 +85,7 @@ class MyCircularDeque:
 
     def isFull(self) -> bool:
         
-        if self.myDeq[self.front] != None :
+        if self.myDeq[self.front] != None or self.myDeq[self.last] != None:
             return True
         
         return False
