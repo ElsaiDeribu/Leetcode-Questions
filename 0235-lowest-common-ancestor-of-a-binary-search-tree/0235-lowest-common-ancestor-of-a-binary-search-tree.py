@@ -21,7 +21,7 @@ class Solution:
             left = postOrder(node.left)
             right = postOrder(node.right)
             
-            if (left == q and right == p) or ((right == q and left == p) ) :
+            if right and left :
                 return node
             
             if left and not right:
@@ -30,8 +30,6 @@ class Solution:
             elif right and not left:
                 return right
             
-            return
-          
         
         return postOrder(root)
             
