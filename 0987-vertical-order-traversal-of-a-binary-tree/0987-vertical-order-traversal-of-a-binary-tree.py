@@ -21,15 +21,11 @@ class Solution:
             
         recur(root, 0, 0) 
         
-        dic = list(sorted(dic.items(), key = lambda x : x[0]))
-        
-        for i in range(len(dic)):
-            dic[i] = dic[i][1]
+        dic = [value for key,value in sorted(dic.items(), key = lambda x : x[0])]
         
         for i in range(len(dic)):
             dic[i].sort()
             for j in range(len(dic[i])):
                 dic[i][j] =  dic[i][j][1]
-                
         return dic
         
