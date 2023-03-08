@@ -21,7 +21,7 @@ class Solution:
             
         recur(root, 0, 0) 
         
-        dic = [value for key,value in sorted(dic.items(), key = lambda x : x[0])]
+        dic = [value for key,value in sorted(dic.items())]
         
         for i in range(len(dic)):
             dic[i].sort()
