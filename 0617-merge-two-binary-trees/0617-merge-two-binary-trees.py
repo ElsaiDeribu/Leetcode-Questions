@@ -7,27 +7,25 @@
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
         
-            
-        def build(node1, node2):
-            if not node1 and not node2:
-                return 
-            
-            if node1 and not node2:
-                return node1
-            
-            elif not node1 and node2:
-                return node2
-                
-            else:
-                node1.val = node1.val + node2.val
-                
-                node1.left = build(node1.left, node2.left)
-                node1.right = build(node1.right, node2.right)
-            
-                return node1
+
+        if not root1 and not root2:
+            return 
+
+        if root1 and not root2:
+            return root1
+
+        elif not root1 and root2:
+            return root2
+
+        else:
+            root1.val = root1.val + root2.val
+
+            root1.left = self.mergeTrees(root1.left, root2.left)
+            root1.right = self.mergeTrees(root1.right, root2.right)
+
+            return root1
             
         
-        return build(root1, root2)
 
         
     
