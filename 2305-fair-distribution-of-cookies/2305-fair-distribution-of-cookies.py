@@ -4,6 +4,7 @@ class Solution:
         
         self.minUnf = float("inf")
         
+        cookies.sort(reverse = True)
         
         def recur(start, children):
             
