@@ -4,7 +4,7 @@ class Solution:
         
         self.minUnf = float("inf")
         
-        cookies.sort(reverse = True)
+        cookies.sort()
         
         def recur(start, children):
             
@@ -17,8 +17,9 @@ class Solution:
             for i in range(k):
                 temp = children[:]
                 temp[i] += cookies[start]
-                if temp[i] < self.minUnf:
-                    recur(start + 1, temp)
+                if temp[i] >= self.minUnf:
+                    return
+                recur(start + 1, temp)
                 
                 
         children = [0] * k
