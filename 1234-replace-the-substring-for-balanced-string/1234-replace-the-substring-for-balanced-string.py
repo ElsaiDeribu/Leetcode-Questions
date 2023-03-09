@@ -18,7 +18,7 @@ class Solution:
         
         def check():
             for item in count:
-                if item not in windowElements or windowElements[item] < count[item]:
+                if windowElements[item] < count[item]:
                     return False
                 
             return True
