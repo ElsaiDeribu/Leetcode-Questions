@@ -4,26 +4,26 @@ class Solution:
         ans = []
         comb = []
         
-        def recur(i):
+        def recur(start):
             
             if len(comb) == k:
                 ans.append(comb[:])
                 return
             
-            if i > n:
-                return 
+#             if i > n:
+#                 return 
             
-            comb.append(i)
-            recur(i + 1)
-            comb.pop()
-            recur( i + 1)
+#             comb.append(i)
+#             recur(i + 1)
+#             comb.pop()
+#             recur( i + 1)
             
             
-#             for i in range(start, n + 1):
+            for i in range(start, n + 1):
                 
-#                 comb.append(i)
-#                 recur(i + 1)
-#                 comb.pop()
+                comb.append(i)
+                recur(i + 1)
+                comb.pop()
                     
         recur(1)
         
