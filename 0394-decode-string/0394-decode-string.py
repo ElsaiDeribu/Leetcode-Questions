@@ -7,7 +7,7 @@ class Solution:
         def recur(start):
             
             i = start
-            temp = ""
+            temp = []
             num = 0
             
             while i < len(s):
@@ -16,10 +16,11 @@ class Solution:
                     num = num * 10 + int(s[i])
                   
                 elif s[i] == "[":
+                    
                     result, currIndex = recur(i + 1)
                     i = currIndex 
                     
-                    temp += (result * num)
+                    temp.append(result * num)
                     num = 0
                     
                 elif s[i] == "]":
@@ -27,12 +28,12 @@ class Solution:
                     break
                     
                 else:
-                    temp += s[i]
+                    temp.append(s[i])
                   
                 i += 1
             
             
-            return (temp, i)
+            return ("".join(temp), i)
 
                 
         return recur(0)[0]
