@@ -19,7 +19,7 @@ class Solution:
                     result, currIndex = recur(i + 1)
                     i = currIndex 
                     
-                    temp += (result * num) if num != 0 else result
+                    temp += (result * num)
                     num = 0
                     
                 elif s[i] == "]":
