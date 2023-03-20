@@ -10,12 +10,14 @@ class Solution:
             for i in range(idx, len(s)):
                 val = int(s[idx : i + 1 ])
                 
-                if val + 1 == prev and dfs(i + 1, val):
-                    return True
+                if val + 1 == prev:
+                    res =  dfs(i + 1, val)
+                    if res: return True
                 
         for i in range(len(s) - 1):
             val = int(s[: i + 1])
             if dfs(i + 1, val):
+                # print("i", i)
                 return True
         
         return False
