@@ -6,62 +6,61 @@
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        if not head or not head.next:
-            return head
+        lst = []
+        ptr = head
         
-        mid = self.getMid(head)
+        while ptr:
+            lst.append(ptr.val)
+            ptr = ptr.next
+
+        lst = self.mergeSort(lst)
         
-        right = mid.next
-        mid.next = None
-        left = head
-        
-        mergedLeft = self.sortList(left)
-        mergedRight = self.sortList(right)
-        
-        return self.merge(mergedLeft, mergedRight)
-        
-        
-      
-    def getMid(self, head):
-        slow = head
-        fast = head.next
-        
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+        ptr = head
+        for i in range(len(lst)):
+            ptr.val = lst[i]
+            ptr = ptr.next
             
-        return slow
-    
-    def merge(self, list1, list2):
+        return head
         
-        merged = ListNode()
-        ptr = merged
+    def mergeSort(self, arr):
         
-        while list1 and list2:
-            
-            if list1.val > list2.val:
-                ptr.next = ListNode(list2.val)
-                ptr = ptr.next
-                list2 = list2.next
-            
+        if len(arr) <= 1:
+            return arr
+
+        mid = len(arr) // 2 
+
+        left = arr[:mid]
+        right = arr[mid:]
+
+        mergedLeft = self.mergeSort(left)
+        mergedRight = self.mergeSort(right)
+
+        lft = 0 
+        rght = 0
+        merged = 0
+
+        while lft < len(mergedLeft) and rght < len(mergedRight):
+
+            if mergedLeft[lft] > mergedRight[rght]:
+                arr[merged] = mergedRight[rght]
+                rght += 1
+
             else:
-                ptr.next = ListNode(list1.val)
-                ptr = ptr.next
-                list1 = list1.next
+                arr[merged] = mergedLeft[lft]
+                lft += 1
                 
-        if list1:
-            ptr.next = list1
+            merged += 1
             
-        if list2:
-            ptr.next = list2
+        while  lft < len(mergedLeft):
+            arr[merged] = mergedLeft[lft]
+            lft += 1
+            merged += 1
+
+        while  rght < len(mergedRight):
+            arr[merged] = mergedRight[rght]
+            rght += 1
+            merged += 1
             
-        return merged.next
-                
-                
-                
-                
-            
-            
-            
-            
+        return arr
+
         
