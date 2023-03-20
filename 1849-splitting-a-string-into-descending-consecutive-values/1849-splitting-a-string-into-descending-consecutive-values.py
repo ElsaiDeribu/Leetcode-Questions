@@ -1,33 +1,22 @@
 class Solution:
     def splitString(self, s: str) -> bool:
         
-        s = str((int(s)))
         
-        
-        def check(idx, prev):
-            
+        def dfs(idx, prev):
             if idx == len(s):
                 return True
             
-            for j in range(idx, len(s)):
-                curr = int(s[idx : j + 1])
+            for i in range(idx, len(s)):
+                val = int(s[idx : i + 1 ])
                 
-                if prev - curr == 1 and check(j + 1, curr):
+                if val + 1 == prev and dfs(i + 1, val):
                     return True
                 
-            return False
-        
-        
-        
-        
-        
         for i in range(len(s) - 1):
-            
-            curr = int(s[: i + 1])
-            
-            if check(i + 1, curr): return True
-            
-            
+            val = int(s[: i + 1])
+            if dfs(i + 1, val):
+                return True
+        
         return False
         
         
