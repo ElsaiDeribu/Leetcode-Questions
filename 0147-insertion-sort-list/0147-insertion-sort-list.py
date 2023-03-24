@@ -6,19 +6,49 @@
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        newhead = head 
-        i = head
-        j = head.next
+        if not head.next:
+            return head 
         
-        while i.next: 
-            while j:
-                if j.val < i.val:
-                    i.val, j.val = j.val, i.val
-                    
-                j = j.next
-                    
-            i = i.next
-            j = i.next
+        temp = ListNode(next = head)
+        head = temp
+        self.border = head.next
+        
+        while self.border and self.border.next :
             
-        return newhead
+            temp = self.border.next
+            self.border.next = self.border.next.next
+            self.insert(head, temp)
+        
+        return head.next
+        
+        
+    def insert(self, head, node):
+        
+        prev = head
+        curr = head.next
+        
+        while curr and curr.val <= node.val:
+            if prev == self.border:
+                node.next = curr
+                prev.next = node
+                self.border = node
+                return
             
+            curr = curr.next
+            prev = prev.next
+         
+        if prev == self.border:
+                node.next = curr
+                prev.next = node
+                self.border = node
+                return
+            
+        else:
+            node.next = curr
+            prev.next = node
+
+            if not curr:
+                self.border = curr
+
+        
+        
