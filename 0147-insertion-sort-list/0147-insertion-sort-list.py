@@ -34,9 +34,7 @@ class Solution:
         
         if prev == self.border:
             self.border = node
-        
-        # elif not curr:
-        #     self.border = curr
+
 
         
         
