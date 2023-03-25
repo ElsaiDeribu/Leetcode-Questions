@@ -29,17 +29,14 @@ class Solution:
             curr = curr.next
             prev = prev.next
          
+        node.next = curr
+        prev.next = node
+        
         if prev == self.border:
-                node.next = curr
-                prev.next = node
-                self.border = node
-            
-        else:
-            node.next = curr
-            prev.next = node
-
-            if not curr:
-                self.border = curr
+            self.border = node
+        
+        elif not curr:
+            self.border = curr
 
         
         
