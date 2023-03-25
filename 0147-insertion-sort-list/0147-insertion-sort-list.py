@@ -24,7 +24,7 @@ class Solution:
         prev = head
         curr = head.next
         
-        while curr and curr.val <= node.val and prev != self.border :
+        while curr and curr.val <= node.val and prev != self.border:
             
             curr = curr.next
             prev = prev.next
@@ -35,8 +35,8 @@ class Solution:
         if prev == self.border:
             self.border = node
         
-        elif not curr:
-            self.border = curr
+        # elif not curr:
+        #     self.border = curr
 
         
         
