@@ -6,9 +6,6 @@
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        if not head.next:
-            return head 
-        
         temp = ListNode(next = head)
         head = temp
         self.border = head.next
@@ -27,12 +24,7 @@ class Solution:
         prev = head
         curr = head.next
         
-        while curr and curr.val <= node.val:
-            if prev == self.border:
-                node.next = curr
-                prev.next = node
-                self.border = node
-                return
+        while curr and curr.val <= node.val and prev != self.border :
             
             curr = curr.next
             prev = prev.next
@@ -41,7 +33,6 @@ class Solution:
                 node.next = curr
                 prev.next = node
                 self.border = node
-                return
             
         else:
             node.next = curr
