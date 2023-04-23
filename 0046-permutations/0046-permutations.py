@@ -2,27 +2,29 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
         
-        def recur(arr):
+        ans = []
+        perm = []
+        count = Counter(nums)
+        
+        def dfs():
+            if len(perm) == len(nums):
+                ans.append(perm[:])
+                return
             
-            if len(arr) == 1:
-                return [arr[:]] 
-             
-            result = []
-            for i in range(len(arr)):
-                n = arr.pop(0)
-                nxt = recur(arr)
-                arr.append(n)
+            for item in count:
                 
-                for item in nxt:
-                    item.append(n)
+                if count[item] > 0:
+                    count[item] -= 1
+                    perm.append(item)
+                    
+                    dfs()
+                    count[item] += 1
+                    perm.pop()
                     
                     
-                result.extend(nxt)
-                
-            return result
+        dfs()
         
-        
-        return recur(nums)
+        return ans
                 
                 
                 
