@@ -2,31 +2,35 @@ class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         
         
-        def recur(arr):
+        ans = []
+        perm = []
+        
+        count = Counter(nums)
+        
+        def dfs():
             
-            if len(arr) == 1:
-                return [arr[:]] 
-             
-            result = []
-            for i in range(len(arr)):
-                n = arr.pop(0)
-                nxt = recur(arr)
-                arr.append(n)
-                
-                for item in nxt:
-                    item.append(n)
+            if len(perm) == len(nums):
+                ans.append(perm[:])
+                return
+            
+            
+            for item in count:
+                if count[item] > 0:
                     
-                result.extend(nxt)
-                
-            return result
+                    count[item] -= 1
+                    perm.append(item)
+                    
+                    dfs()
+                    
+                    perm.pop()
+                    count[item] += 1
+                    
+        dfs()
         
         
-        ans = recur(nums)
-        
-        for i in range(len(ans)):
-            ans[i] = tuple(ans[i])
-            
-        return set(ans)
+        return ans
+                    
+                    
             
                 
                 
