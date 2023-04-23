@@ -14,10 +14,10 @@ class Solution:
         
         def dfs(node):
             visited.add(node)
-            if not adjList[node]:
-                temp = [0] * 26
-                temp[ord(labels[node]) - 97] += 1 
-                return temp
+            # if not adjList[node]:
+            #     temp = [0] * 26
+            #     temp[ord(labels[node]) - 97] += 1 
+            #     return temp
             
             curr = [0] * 26
     
