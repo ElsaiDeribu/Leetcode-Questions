@@ -18,10 +18,11 @@ class Solution:
         exploded = set()
         
         def explode(index):
+            exploded.add(index)
+
             total = 1
             for idx in adjList[index]:
                 if idx not in exploded:
-                    exploded.add(idx)
                     total += explode(idx)
                     
             return total
@@ -29,7 +30,6 @@ class Solution:
         
         
         for i in range(len(adjList)):
-            exploded.add(i)
             maxBom = max(maxBom, explode(i))
             exploded = set()
         
