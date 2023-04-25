@@ -4,21 +4,24 @@ class Solution:
         
         ans = []
         perm = []
-        count = Counter(nums)
+        visited = 2 ** len(nums)
         
         def dfs():
             if len(perm) == len(nums):
                 ans.append(perm[:])
                 return
             
-            for item in count:
-                
-                if count[item] > 0:
-                    count[item] -= 1
-                    perm.append(item)
+            for i in range(len(nums)):
+                nonlocal visited
+                if not (1 << i & visited):
+                    visited |= (1 << i)
+                    perm.append(nums[i])
                     
                     dfs()
-                    count[item] += 1
+                    
+                    visited = ~visited
+                    visited |= (1 << i) 
+                    visited = ~visited
                     perm.pop()
                     
                     
