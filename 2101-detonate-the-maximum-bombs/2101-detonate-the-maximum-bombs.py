@@ -17,8 +17,6 @@ class Solution:
         maxBom = 1
         exploded = set()
         
-        print(adjList)
-    
         def explode(index):
             total = 1
             for idx in adjList[index]:
