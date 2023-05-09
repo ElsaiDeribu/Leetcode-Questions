@@ -10,17 +10,15 @@ class Solution:
             
             if hDiff > 0:
                 
-                if len(heap) < ladders:
-                    heappush(heap, hDiff)
+                heappush(heap, hDiff)
+                
+                if len(heap) > ladders:
                     
-                else:
-                    
-                    heappush(heap, hDiff)
                     minimum = heappop(heap)
                     bricks -= minimum
+                    
                     if bricks < 0:
                         return i
-                    
         
         return len(heights) - 1
                     
