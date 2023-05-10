@@ -35,6 +35,6 @@ class Solution:
                         deq.append(child)
            
         for i in range(len(ancestors)):
-            ancestors[i] = list(sorted(ancestors[i]))
+            ancestors[i] = sorted(ancestors[i])
                 
         return ancestors
