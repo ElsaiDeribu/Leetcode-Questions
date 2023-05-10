@@ -2,7 +2,7 @@ class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         
         ans = []
-        colors = [0 for _ in range(len(graph))] 
+        colors = [0] * len(graph) 
         
         def dfs(node):
             
