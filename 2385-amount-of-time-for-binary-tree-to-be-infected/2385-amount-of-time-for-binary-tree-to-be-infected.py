@@ -29,11 +29,9 @@ class Solution:
         
         visited = set() 
         visited.add(start)
-        time = -1
+        time = 0
         
         while deq:
-            
-            time += 1
             
             for _ in range(len(deq)):
                 
@@ -43,7 +41,8 @@ class Solution:
                     if child not in visited:
                         visited.add(child)
                         deq.append(child)
-                
+            if deq:
+                time += 1
                     
         return time
                     
