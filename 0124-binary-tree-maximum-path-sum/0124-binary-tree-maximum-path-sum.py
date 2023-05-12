@@ -20,6 +20,7 @@ class Solution:
             
             left = node.val
             right = node.val
+            
             if node.left:
                 left += dfs(node.left)
             
@@ -28,7 +29,7 @@ class Solution:
                 
             ans = max(ans, left, right, node.val, left+right-node.val)
             
-            return max(node.val, left, right, 0)
+            return max(node.val, left, right)
         
         dfs(root)
         
