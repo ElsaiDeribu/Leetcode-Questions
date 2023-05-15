@@ -7,12 +7,9 @@ class Solution:
         ancestors = [set() for _ in range(numCourses)]
         ans = []
         
-        for pre in prerequisites:
+        for frm, to in prerequisites:
             
-            frm = pre[0]
-            to = pre[1]
             adjList[frm].append(to)
-            
             inDeg[to] += 1
             
             
@@ -36,12 +33,8 @@ class Solution:
                     if inDeg[child] == 0:
                         deq.append(child)
                     
-           
         
-        for q in queries:
-            
-            pre = q[0]
-            post = q[1]
+        for pre, post in queries:
             
             ans.append(pre in ancestors[post])
         
