@@ -7,9 +7,7 @@ class Solution:
         ancestors = [set() for _ in range(n)]
         
         
-        for edge in edges:
-            frm = edge[0]
-            to = edge[1]
+        for frm, to in edges:
             
             adjList[frm].append(to)
             indegree[to] += 1
@@ -27,10 +25,12 @@ class Solution:
                 node = deq.popleft()
                 
                 for child in adjList[node]:
+                    
                     indegree[child] -= 1
-                    ancestors[child] = ancestors[child].union(ancestors[node])
                     
                     ancestors[child].add(node)
+                    ancestors[child].update(ancestors[node])
+                    
                     if indegree[child] == 0:
                         deq.append(child)
            
