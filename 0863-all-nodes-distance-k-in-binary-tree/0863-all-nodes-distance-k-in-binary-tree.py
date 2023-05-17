@@ -36,7 +36,7 @@ class Solution:
             visited.add(target.val)
             dis = 0
             
-            while deq :
+            while deq and dis != k:
                 
                 dis += 1
                 for _ in range(len(deq)):
@@ -47,8 +47,5 @@ class Solution:
                             visited.add(child)
                             deq.append(child)
             
-                if dis == k:
-                    break
-                
                 
             return list(deq)
