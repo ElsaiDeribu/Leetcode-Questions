@@ -12,25 +12,22 @@ class Solution:
         
         def dfs(node, parent):
             nonlocal order
+            order.append(node)
             
             if len(adjList[node]) == 1:
-                order.append(node)
                 return
 
             for child in adjList[node]:
                 if child != parent:
                     dfs(child, node)
 
-            
-            order.append(node)
+           
 
-        
         for node in adjList:
             if len(adjList[node]) == 1:
+                order.append(node)
                 child = adjList[node][0]
                 dfs(child, node)
                     
-                order.append(node)
-                
                 return order
        
