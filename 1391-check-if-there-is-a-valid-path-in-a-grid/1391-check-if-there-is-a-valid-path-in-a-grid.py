@@ -2,8 +2,8 @@ class Solution:
     def hasValidPath(self, grid: List[List[int]]) -> bool:
         
         endPoint = {1:["left","right"], 2:["above", "below"], 
-              3:["left", "below"], 4:["below", "right"], 
-              5:["left", "above"], 6:["above", "right"]}
+                  3:["left", "below"], 4:["below", "right"], 
+                  5:["left", "above"], 6:["above", "right"]}
         
         check = {"right":"left", "above":"below", "left":"right", "below":"above"}
         directions = {"below":(1,0),"right":(0,1),"above":(-1,0),"left":(0,-1)}
