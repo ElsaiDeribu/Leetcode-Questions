@@ -2,7 +2,7 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         
         
-        @cache
+        @lru_cache
         def recur(step):
             
             if step == 0:
