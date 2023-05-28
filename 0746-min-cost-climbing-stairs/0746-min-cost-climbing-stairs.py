@@ -1,8 +1,11 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         
-        @cache
+        memo = {}
         def cal(n):
+            
+            if n in memo:
+                return memo[n]
             
             if n >= len(cost):
                 return 0
@@ -14,7 +17,8 @@ class Solution:
             res1 = cal(n + 1)
             res2 = cal(n + 2)
             
-            return min(res1, res2) + cost[n]
+            memo[n] = min(res1, res2) + cost[n]
+            return memo[n]
         
         
         return min(cal(0), cal(1))
