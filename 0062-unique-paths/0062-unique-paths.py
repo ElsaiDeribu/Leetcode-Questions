@@ -6,8 +6,11 @@ class Solution:
         def inbound(index):
             return 0 <= index[0] < m and 0 <= index[1] < n
         
-        @cache 
+        memo = {}
         def dfs(curr): 
+            
+            if curr in memo:
+                return memo[curr]
             
             if curr[0] == m - 1 and curr[1] == n - 1:
                 return 1
@@ -23,6 +26,8 @@ class Solution:
                 
                 total += dfs((row, col))
                 
+            memo[curr] = total  
+            
             return total
         
         
