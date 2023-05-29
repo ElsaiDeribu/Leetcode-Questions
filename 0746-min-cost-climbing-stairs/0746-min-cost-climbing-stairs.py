@@ -7,21 +7,18 @@ class Solution:
             if n in memo:
                 return memo[n]
             
-            if n >= len(cost):
-                return 0
+            if n < 0: return 0
+            if n == 0: return cost[0]
             
-            if n == len(cost) - 1:
-                return cost[-1]
-            
-            
-            res1 = cal(n + 1)
-            res2 = cal(n + 2)
-            
-            memo[n] = min(res1, res2) + cost[n]
+            memo[n] = min(cal(n - 1), cal(n - 2)) + (cost[n] if n < len(cost) else 0)
             return memo[n]
+            
         
+        return cal(len(cost))
+    
+    
+    
         
-        return min(cal(0), cal(1))
             
             
             
