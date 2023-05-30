@@ -8,7 +8,7 @@ class Solution:
         for i in range(len(score)):
             scr[chr(ord("a") + i)] = score[i]
            
-        @cache
+        @lru_cache(None)
         def dp(idx, path):
             
             if idx >= len(words):
