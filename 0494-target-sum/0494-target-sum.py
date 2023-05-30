@@ -3,9 +3,11 @@ class Solution:
         
         memo = {}
         
-        @cache
         def dp(n, curr):
-                
+            
+            if (n, curr) in memo:
+                return memo[(n, curr)]
+            
             if n >= len(nums):
                 if curr == target:
                     return 1
@@ -14,7 +16,9 @@ class Solution:
             right = dp(n + 1, curr - nums[n])
             left = dp(n + 1, curr + nums[n])
             
-            return left + right
+            memo[(n,curr)] = left + right
+            
+            return memo[(n,curr)]
             
 
         return dp(0, 0)
