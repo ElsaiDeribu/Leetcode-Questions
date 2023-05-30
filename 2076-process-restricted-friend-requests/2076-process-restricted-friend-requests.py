@@ -2,6 +2,7 @@ class Solution:
     def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:
         
         parent = {i:i for i in range(n)}
+        size = {i:1 for i in range(n)}
         ans = [True] * len(requests)
         
         
@@ -23,7 +24,14 @@ class Solution:
             if repX == repY:
                 return 
             
-            parent[repX] = repY
+            if size[repX] >= size[repY]:
+                parent[repY] = repX
+                size[repX] += size[repY]
+                
+            else:
+                parent[repX] = repY
+                size[repY] += size[repX]
+                
             
         
         for i in range(len(requests)):
