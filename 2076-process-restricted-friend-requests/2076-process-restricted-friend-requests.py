@@ -48,7 +48,8 @@ class Solution:
                 if {find(r1), find(r2)} == conn :
                     ans[i] = False
                     break
-            else:
+                    
+            if ans[i]:
                 union(n1, n2)
                 
 
