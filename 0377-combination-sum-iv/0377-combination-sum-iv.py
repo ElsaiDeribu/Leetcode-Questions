@@ -17,6 +17,5 @@ class Solution:
                 
             return res 
         
-        ans = dp(target) 
         
-        return ans
+        return dp(target)
