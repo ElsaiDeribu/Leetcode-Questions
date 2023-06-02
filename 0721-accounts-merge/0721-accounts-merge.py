@@ -46,7 +46,7 @@ class Solution:
         for item in res:
             temp = []
             temp.append(accounts[item][0])
-            temp.extend(list(sorted(res[item])))
+            temp.extend(sorted(res[item]))
             ans.append(temp)
             
         return ans
