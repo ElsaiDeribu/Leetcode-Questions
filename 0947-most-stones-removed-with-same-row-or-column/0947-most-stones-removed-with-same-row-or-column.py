@@ -33,14 +33,20 @@ class Solution:
             size[stones[i]] = 1
             parent[stones[i]] = stones[i]
         
-   
+        row, col = {}, {}
         for i in range(len(stones)):
-            for j in range(i + 1, len(stones)):
-                cell1 = stones[i]
-                cell2 = stones[j]
+            if stones[i][0] in row:
+                union(row[stones[i][0]], stones[i])
+            if stones[i][1] in col:
+                union(col[stones[i][1]], stones[i])
+            row[stones[i][0]] = stones[i]
+            col[stones[i][1]] = stones[i]
+#             for j in range(i + 1, len(stones)):
+#                 cell1 = stones[i]
+#                 cell2 = stones[j]
 
-                if cell1[0] == cell2[0] or cell1[1] == cell2[1]:
-                    union(cell1, cell2)
+#                 if cell1[0] == cell2[0] or cell1[1] == cell2[1]:
+#                     union(cell1, cell2)
         
         ans = 0
         visited = set()
