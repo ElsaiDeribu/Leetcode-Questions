@@ -5,6 +5,8 @@ class Solution:
             return [[1]]
         ans = []
         ans.append([1])
+        
+        @cache
         def recur(n):
           
             if n == 2:
