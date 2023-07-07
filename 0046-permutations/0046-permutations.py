@@ -3,30 +3,33 @@ class Solution:
         
         
         ans = []
-        visited = set()
         perm = []
-
-        def recur():
+        
+        count = Counter(nums)
+        
+        def dfs():
             
             if len(perm) == len(nums):
                 ans.append(perm[:])
-                return 
+                return
             
             
-            for i in range(len(nums)):
-                if nums[i] not in visited:
-                    perm.append(nums[i])
-                    visited.add(nums[i])
-                    recur()
-                    visited.remove(nums[i])
+            for item in count:
+                if count[item] > 0:
+                    
+                    count[item] -= 1
+                    perm.append(item)
+                    
+                    dfs()
+                    
                     perm.pop()
-            
+                    count[item] += 1
+                    
+        dfs()
         
-     
-        recur()
         
         return ans
-                
+                    
                 
                 
         
