@@ -3,7 +3,7 @@ class Solution:
         
         ans = []
         
-        # @cache
+        @cache
         def recur(n):
                 
             if n == 1:
