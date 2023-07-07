@@ -3,29 +3,27 @@ class Solution:
         
         
         ans = []
+        visited = set()
         perm = []
-        visited = 2 ** len(nums)
-        
-        def dfs():
+
+        def recur():
+            
             if len(perm) == len(nums):
                 ans.append(perm[:])
-                return
+                return 
+            
             
             for i in range(len(nums)):
-                nonlocal visited
-                if not (1 << i & visited):
-                    visited |= (1 << i)
+                if nums[i] not in visited:
                     perm.append(nums[i])
-                    
-                    dfs()
-                    
-                    visited = ~visited
-                    visited |= (1 << i) 
-                    visited = ~visited
+                    visited.add(nums[i])
+                    recur()
+                    visited.remove(nums[i])
                     perm.pop()
-                    
-                    
-        dfs()
+            
+        
+     
+        recur()
         
         return ans
                 
