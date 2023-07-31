@@ -2,21 +2,15 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         
         @cache
-        def rob(n):
+        def steal(curr):
             
-            if n >= len(nums):
+            if curr >= len(nums):
                 return 0
             
-            if n == len(nums) - 1:
-                return nums[-1]
+            largest = max(steal(curr + 2), steal(curr + 3))
             
-            curr = nums[n]
-            res = 0
-            for i in range(n + 2, len(nums)):
-                 res = max(res, rob(i))
-                    
-            return res + curr
-                    
+            return nums[curr] + largest
+        
+        
+        return max(steal(0), steal(1))
                 
-                
-        return max(rob(0), rob(1))
