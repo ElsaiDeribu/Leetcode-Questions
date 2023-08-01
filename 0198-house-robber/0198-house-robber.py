@@ -1,16 +1,20 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
         
-        @cache
-        def steal(curr):
-            
-            if curr >= len(nums):
-                return 0
-            
-            largest = max(steal(curr + 2), steal(curr + 3))
-            
-            return nums[curr] + largest
+        past, present = 0, 0
+        ans = 0
         
-        
-        return max(steal(0), steal(1))
+        for i in range(len(nums)):
+            
+            ans = max(past + nums[i], present)
+            
+            past = present
+            present = ans
                 
+        
+        return ans
+            
+            
+            
+        
+   
