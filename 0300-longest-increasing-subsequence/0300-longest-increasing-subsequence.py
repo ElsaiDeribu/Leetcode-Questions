@@ -1,19 +1,21 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         
-        
-        lis = [1] * len(nums)
-        
-        for i in range(1, len(nums)):
-            
-            longest = 0
-            for j in range(i):
-                
-                if nums[j] < nums[i] and lis[j] > longest:
-                    longest = lis[j]
+                      
+        ans = []
                     
-            lis[i] = longest + 1
+        for num in nums:
+                    
+            if not ans or num > ans[-1]:
+                ans.append(num)
+                    
+            else:
+                ans[bisect_left(ans, num)] = num
+                
             
             
-        return max(lis)
+        return len(ans)
+        
+        
+        
         
