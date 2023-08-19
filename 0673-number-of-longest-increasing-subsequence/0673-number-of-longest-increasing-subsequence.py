@@ -20,14 +20,11 @@ class Solution:
                         
             lis[i] = longest + 1
  
-        lngstIdx = 0    
-        for i in range(len(lis)):
-            if lis[i] > lis[lngstIdx]:
-                lngstIdx = i
+        longest = max(lis)
         
         ans = 0
         for i in range(len(count)):
-            if lis[i] == lis[lngstIdx]:
+            if lis[i] == longest:
                 ans += count[i]
                 
         return ans
