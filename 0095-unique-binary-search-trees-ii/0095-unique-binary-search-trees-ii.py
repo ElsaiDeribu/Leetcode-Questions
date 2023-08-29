@@ -8,25 +8,24 @@ class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         
         
-        def build(arr):
-            if len(arr) == 0:
+        def build(start, end):
+            if start > end:
                 return [None]
             
             trees = []
-            for i in range(len(arr)):
-                resLeft = build(arr[:i])
-                resRight = build(arr[i + 1:])
+            for i in range(start, end + 1):
+                resLeft = build(start, i - 1)
+                resRight = build(i + 1, end)
                 for l in resLeft:
                     for r in resRight:
-                        curr = TreeNode(arr[i])
+                        curr = TreeNode(i)
                         curr.left = l
                         curr.right = r
                         trees.append(curr)
                 
             return trees
         
-        arr = [i for i in range(1, n + 1)]
         
-        return build(arr)
+        return build(1, n)
         
             
