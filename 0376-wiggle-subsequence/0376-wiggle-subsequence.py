@@ -2,9 +2,6 @@ class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
         
         
-        if len(nums) == 1:
-            return 1
-        
         count = 1
         last = nums[0]
         positive = None
