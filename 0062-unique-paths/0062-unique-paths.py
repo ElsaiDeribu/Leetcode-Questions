@@ -1,34 +1,29 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         
-        directions = [(0,1),(1,0)]
+        directions = [(1,0), (0,1)]
         
-        def inbound(index):
+        def isInbound(index):
             return 0 <= index[0] < m and 0 <= index[1] < n
         
-        memo = {}
-        def dfs(curr): 
+        @cache 
+        def count(curr):
+            row = curr[0]
+            col = curr[1]
             
-            if curr in memo:
-                return memo[curr]
-            
-            if curr[0] == m - 1 and curr[1] == n - 1:
+            if row == m - 1 and col == n - 1:
                 return 1
             
-            if not inbound(curr):
-                return 0
-            
             total = 0
-            
-            for r, c in directions:
-                row = curr[0] + r
-                col = curr[1] + c
+            for direction in directions:
+                row = curr[0] + direction[0]
+                col = curr[1] + direction[1]
                 
-                total += dfs((row, col))
-                
-            memo[curr] = total  
-            
+                if isInbound((row, col)):
+                    total += count((row, col))
+                    
             return total
         
         
-        return dfs((0,0))
+                
+        return count((0,0))
