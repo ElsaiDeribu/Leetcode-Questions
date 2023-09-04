@@ -7,15 +7,15 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         
-        ptr = head
-        visited = set()
+        fast = head
+        slow = head
         
-        while ptr:
-            if ptr in visited:
+        while fast and fast.next :
+            fast = fast.next.next
+            slow = slow.next
+            
+            if fast == slow:
                 return True
-            ptr2 = ptr
-            visited.add(ptr2)
-            ptr = ptr.next
             
             
         return False
