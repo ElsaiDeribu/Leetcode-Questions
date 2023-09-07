@@ -6,65 +6,47 @@
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         
-        if not head.next:
-            return head
         
-        count = 0
-        start = ListNode()
-        start.next = head
-        end = head
-        head = start
-        
-        while count != left - 1:
-            start = start.next
-            count += 1
-        
-        count = 1
-        while count != right + 1:
-            if count == right:
-                temp = end
-                end = end.next
-                temp.next = None
-                
-            else:
-                end = end.next
-                
-            count += 1
+        def reverse(start, size):
             
+            tail = start
+            prev = None
+            curr = start
+            nxt = start.next 
             
-        startToRev = start.next
-        revStart, revEnd  = self.reverse(startToRev)
-        start.next = revStart
-        revEnd.next = end
+            while size and curr:
+                
+                curr.next = prev
+                prev = curr
+                curr = nxt
+                nxt = nxt.next if nxt else None
+                
+                size -= 1
+              
+            tail.next = curr
+            return prev
         
+        
+        temp = ListNode()
+        temp.next = head
+        head = temp
+        
+        for _ in range(left - 1):
+            temp = temp.next
+                    
+
+        prev = reverse(temp.next, right - left + 1)
+        temp.next = prev
         return head.next
-            
-    def reverse(self, head):
         
-        curr = head
-        nxt = head.next
-        prev = None
         
-        while curr:
-            curr.next = prev
-            prev = curr
-            curr = nxt
-            if nxt:
-                nxt = nxt.next
-            
-        return (prev, head)
+                
+                
+                
+                
             
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            
+                
+                
             
             
