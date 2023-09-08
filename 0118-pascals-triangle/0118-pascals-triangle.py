@@ -1,32 +1,28 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         
-        ans = []
         
-        @cache
-        def recur(n):
+        def build(row):
+            if row == 2:
+                return [[1], [1,1]]
+            
+            if row == 1:
+                return [[1]]
+            
+            res = build(row - 1)
+            ans = []
+            temp = res[-1]
+            ans.append(1)
+            
+            for i in range(len(temp) - 1): 
+                ans.append(temp[i] + temp[i + 1])
                 
-            if n == 1:
-                return [1]   
+            ans.append(1)
+            res.append(ans)
             
-            res = recur(n - 1)
-            ans.append(res)
-            temp= [1]
-            
-            for i in range(len(res) - 1):
-                temp.append(res[i] + res[i + 1])
+            return res
+        
+        
+        return build(numRows)
                 
-            temp.append(1)
-
             
-            return temp
-        
-        
-        recur(numRows + 1)
-        
-        return ans
-            
-            
-            
-            
-        
