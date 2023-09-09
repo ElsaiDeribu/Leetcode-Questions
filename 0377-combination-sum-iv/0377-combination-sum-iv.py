@@ -1,21 +1,22 @@
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
         
-        
         @cache
-        def dp(remain):
+        def dp(idx, target):
             
-            if remain < 0:
-                return 0
-            
-            if remain == 0:
+            if target == 0:
                 return 1
             
-            res = 0
+            if target < 0:
+                return 0
+            
+            count = 0
+            
             for i in range(len(nums)):
-                res += dp(remain - nums[i])
                 
-            return res 
+                count +=  dp(i, target - nums[i])
+                
+            return count
         
         
-        return dp(target)
+        return dp(0, target)
