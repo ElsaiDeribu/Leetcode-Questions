@@ -3,8 +3,6 @@ class Solution:
         
         
         def build(row):
-            if row == 2:
-                return [[1], [1,1]]
             
             if row == 1:
                 return [[1]]
