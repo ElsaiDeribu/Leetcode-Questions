@@ -14,7 +14,7 @@ class Solution:
             curr = start
             nxt = start.next 
             
-            while size and curr:
+            while size :
                 
                 curr.next = prev
                 prev = curr
