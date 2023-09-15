@@ -7,12 +7,16 @@ class Solution(object):
         
         
         MOD = 10**9 + 7
+        x = n * 2
+        totalWays = 1
         
-        total_ways = 1 
-        
-        for order_number in range(2, n + 1):
-            total_ways = (total_ways * (2 * order_number - 1) * order_number) % MOD
+        for _ in range(n):
             
-        return total_ways
+            totalWays *= (x * (x - 1)) / 2 
+            totalWays %= MOD
+            
+            x -= 2
+            
+        return totalWays
         
         
