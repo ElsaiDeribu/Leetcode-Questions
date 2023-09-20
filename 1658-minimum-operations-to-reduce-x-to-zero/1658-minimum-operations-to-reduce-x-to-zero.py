@@ -1,7 +1,6 @@
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
-        
-         
+                 
         pref = nums[:]
         post = nums[:]
         
@@ -18,15 +17,11 @@ class Solution:
         temp.extend(pref)
         pref = temp
        
-           
-#         print(pref)
-#         print(post)
         ans = float("inf")
         
         for i in range(len(nums)):
             req = x - pref[i] 
             possIdx = bisect_left(post, req)
-            # print(req, possIdx, i)
             
             if possIdx < len(post) and (possIdx + i) < len(post) and post[possIdx] == req:
                 ans = min(ans, i + possIdx)
