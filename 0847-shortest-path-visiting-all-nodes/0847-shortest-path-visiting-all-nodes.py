@@ -1,21 +1,28 @@
 class Solution:
     def shortestPathLength(self, graph: list[list[int]]) -> int:
+
         n = len(graph)
-        all_nodes_mask = (1 << n) - 1
-        seen_paths = set()
-
-        @cache
-        def shortest_path(node: int, path: int = 0) -> int:
-            path |= 1 << node
-            seen_paths.add((node, path))
-
-            path_len = min((
-                shortest_path(x, path)
-                for x in graph[node]
-                if (x, path) not in seen_paths
-            ), default=inf) + 1 if path != all_nodes_mask else 0
-
-            seen_paths.remove((node, path))
-            return path_len
+        target = (1 << n) - 1
+        ans = float("inf")
         
-        return min(map(shortest_path, range(n)))
+        for i in range(n):
+            deq = deque([(i, (1 << i))])
+            seen = set((i, 1 << i))
+            path = 0
+            
+            while deq:
+                if any([b == target for _, b in deq]):
+                    ans = min(ans, path)
+                    break
+                    
+                path += 1
+                
+                for _ in range(len(deq)):
+                    node, visited = deq.popleft()
+                    for neighbour in graph[node] :
+                            v = visited | (1 << neighbour)
+                            if (neighbour, v) not in seen:
+                                seen.add((neighbour, v))
+                                deq.append((neighbour, v))
+                     
+        return ans
