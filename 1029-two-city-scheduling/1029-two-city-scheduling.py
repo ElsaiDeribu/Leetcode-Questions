@@ -12,7 +12,7 @@ class Solution:
             costA = costs[i][0]
             costB = costs[i][1]
             
-            if costA < costB and a < half or b >= half:
+            if costA < costB and a < half or b == half:
                 a += 1
                 ans += costA
                 
