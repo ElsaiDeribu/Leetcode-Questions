@@ -1,31 +1,51 @@
+class TrieNode:
+    def __init__(self, char):
+        self.char = char
+        self.children = [0] * 26
+        self.end = 0
+
 class Solution:
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
         
-        dic = defaultdict(lambda:[])
-
-        for word in words:
-            dic[word[0]].append(deque(word))
-
+        trie = TrieNode("root")
         ans = 0
-        for letter in s:
+        
+        def add(word):
+            nonlocal trie
+            curr = trie
             
-            temp = dic[letter]
-            dic[letter] = []
-            
-            for word in temp:
+            for i in range(len(word)):
+                idx = ord(word[i]) - 97
+                if curr.children[idx] == 0:
+                    curr.children[idx] = TrieNode(word[i])
+                curr = curr.children[idx]
                 
-                word.popleft() 
-                if word:
-                    dic[word[0]].append(word)
-                else:
-                    ans += 1
-                    
+            curr.end += 1
+        
+        for word in words:
+            add(word)
+          
+        
+        def dfs(curr, idx):
+            nonlocal ans
+            ans += curr.end
+            flag = False
+            for char in curr.children:
+                if char != 0:
+                    for i in range(idx, len(s)):
+                        if s[i] == char.char:
+                            flag = True
+                            dfs(char, i + 1)
+                            break
+                            
+        dfs(trie, 0)
+        
         return ans
+            
+        
                     
-                    
-                
-        
-        
-        
-
-        
+            
+            
+            
+            
+            
