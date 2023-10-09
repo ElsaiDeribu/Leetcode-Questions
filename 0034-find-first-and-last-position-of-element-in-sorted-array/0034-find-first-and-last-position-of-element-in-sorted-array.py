@@ -1,19 +1,17 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         
-        if not nums:
-            return [-1, -1]
-        
-        first = bisect_left(nums, target)
-        
-        first = first if first < len(nums) and nums[first] == target else -1
-        
-        second = bisect_right(nums, target)
-        
-        second = second - 1 if nums[second - 1] == target else -1
-        
-        return [first, second]
         
         
-            
-            
+        start = bisect_left(nums, target)
+        end = bisect_right(nums, target)
+        
+        start = start if 0 <= start < len(nums) and nums[start] == target else -1
+        end = end - 1 if (1 <= end < len(nums) and  nums[end - 1] == target) or start != -1 else -1
+        
+        
+        return [start, end]
+        
+        
+        
+                
