@@ -2,8 +2,7 @@ class Solution:
     def minOperations(self, nums: List[int]) -> int:
         
         n = len(nums)
-        nums = sorted(list(set(nums)))
-
+        nums = sorted(set(nums))
         ans = float("inf")
         
         for i in range(len(nums)):
