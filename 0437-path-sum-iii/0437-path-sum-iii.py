@@ -7,26 +7,26 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         
-        pref = defaultdict(int)
-        pref[0] = 1
-        self.count = 0
         
-        def dfs(runningSum, node):
+        def dfs(total, dic, node):
             
             if not node:
-                return
+                return 0
             
-            runningSum += node.val
-            complement = runningSum - targetSum 
-            self.count += pref[complement]
+            total += node.val
+            count = dic[total - targetSum]
+            dic[total] += 1
+            left = dfs(total, dic, node.left)
+            right = dfs(total, dic, node.right )
+            dic[total] -= 1
             
-            pref[runningSum] += 1
+            return left + right + count
             
-            dfs(runningSum, node.left)
-            dfs(runningSum, node.right)
+        pref = defaultdict(int)
+        pref[0] = 1
             
-            pref[runningSum] -= 1
-            
-        dfs(0, root) 
-        
-        return self.count
+        return dfs(0, pref , root)
+    
+    
+    
+    
