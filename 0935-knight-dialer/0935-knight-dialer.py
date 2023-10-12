@@ -16,7 +16,7 @@ class Solution:
         @cache
         def dp(length, index):
             
-            if length == 0:
+            if length == 1:
                 return 1
             
             res = 0
@@ -33,7 +33,7 @@ class Solution:
         for i in range(len(numPad)):
             for j in range(len(numPad[0])):
                 if isInbound((i,j)):
-                    ans += dp(n - 1, (i, j))
+                    ans += dp(n, (i, j))
                     
         return ans % (10**9 + 7)
                 
