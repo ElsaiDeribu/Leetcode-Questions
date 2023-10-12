@@ -9,36 +9,22 @@ class Solution:
         
         
         deq = deque([(root, 1)])
-        
-        maxLen = 1
-        
+        ans = 1
         
         while deq:
             
-            maxLen = max(maxLen, deq[-1][1] - deq[0][1] + 1)
+            ans = max(ans, deq[-1][1] - deq[0][1] + 1)
             
-            for i in range(len(deq)):
-                node, index = deq.popleft()
+            for _ in range(len(deq)):
                 
+                node, index = deq.popleft()
                 if node.left:
                     deq.append((node.left, 2 * index))
                     
                 if node.right:
                     deq.append((node.right, 2 * index + 1))
-                    
-                    
-        return maxLen
-        
-        
-
+                
             
-            
-            
-            
-            
-            
-            
-            
-            
-        
-        
+        return ans
+    
+    
