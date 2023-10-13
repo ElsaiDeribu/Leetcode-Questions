@@ -1,25 +1,12 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         
-        memo = {}
-        def cal(n):
+        @cache
+        def dp(curr):
+            if curr >= len(cost):
+                return 0
             
-            if n in memo:
-                return memo[n]
-            
-            if n < 0: return 0
-            if n == 0: return cost[0]
-            
-            memo[n] = min(cal(n - 1), cal(n - 2)) + (cost[n] if n < len(cost) else 0)
-            return memo[n]
-            
+            return min(dp(curr + 1), dp(curr + 2)) + cost[curr]
         
-        return cal(len(cost))
-    
-    
-    
         
-            
-            
-            
-            
+        return min(dp(0), dp(1))
