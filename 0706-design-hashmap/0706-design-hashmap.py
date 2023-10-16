@@ -1,16 +1,18 @@
 class MyHashMap:
 
     def __init__(self):
-        self.arr = [-1] * (10 ** 6 + 1)    
+        self.map = [-1] * (10**6 + 1)
 
     def put(self, key: int, value: int) -> None:
-        self.arr[key] = value
+        self.map[key] = value
+        
 
     def get(self, key: int) -> int:
-        return self.arr[key]
+        return self.map[key]
+        
 
     def remove(self, key: int) -> None:
-        self.arr[key] = -1
+        self.map[key] = -1
         
 
 
