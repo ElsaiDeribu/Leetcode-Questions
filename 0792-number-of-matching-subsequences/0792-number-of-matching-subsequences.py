@@ -29,12 +29,10 @@ class Solution:
         def dfs(curr, idx):
             nonlocal ans
             ans += curr.end
-            flag = False
             for char in curr.children:
                 if char != 0:
                     for i in range(idx, len(s)):
                         if s[i] == char.char:
-                            flag = True
                             dfs(char, i + 1)
                             break
                             
