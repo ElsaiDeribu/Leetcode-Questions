@@ -2,7 +2,6 @@ class Solution:
     def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
         
         
-        maximum = [0] * len(nums)
         deq = deque([])
         ans = float("-inf")
         
@@ -12,14 +11,14 @@ class Solution:
                 
             prevMax = max(deq[0][0] if deq else 0, 0)
             
-            maximum[i] = nums[i] + prevMax 
+            maximum = nums[i] + prevMax 
 
-            while deq and deq[-1][0] < maximum[i] :
+            while deq and deq[-1][0] < maximum :
                 deq.pop()
                 
-            deq.append((maximum[i], i))
+            deq.append((maximum, i))
              
-            ans = max(ans, maximum[i])
+            ans = max(ans, maximum)
         
         return ans
         
