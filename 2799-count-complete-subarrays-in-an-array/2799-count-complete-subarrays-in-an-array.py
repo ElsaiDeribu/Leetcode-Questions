@@ -1,21 +1,22 @@
 class Solution:
     def countCompleteSubarrays(self, nums: List[int]) -> int:
         
-        dis = len(set(nums))
-        ans = 0
         
-        for i in range(len(nums)):
-            subEl = set()
-            for j in range(i, len(nums)):
-                subEl.add(nums[j])
+        n = len(nums)
+        k = len(set(nums))     
+        ans = l = 0
+        count = Counter()
+   
+        for r in range(n):
+            count[nums[r]] += 1
+            while len(count) == k:
+                count[nums[l]] -= 1
+                if count[nums[l]] == 0:
+                    del count[nums[l]]
+                l += 1
                 
-                if len(subEl) == dis:
-                    ans += 1
-                    
-                    
+            ans += l
+            
         return ans
-                    
-                
-                
-
+            
         
