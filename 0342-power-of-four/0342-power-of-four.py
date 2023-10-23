@@ -1,12 +1,12 @@
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         
+        if n <= 0:
+            return False
         
-        def recur(n):
+        x = log(n, 4)
         
-            if n < 4:
-                return n == 1
-            
-            return recur(n/4)
+        return x == int(x)
         
-        return recur(n)
+        
+        
