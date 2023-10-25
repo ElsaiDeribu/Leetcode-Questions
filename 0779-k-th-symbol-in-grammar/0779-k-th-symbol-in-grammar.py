@@ -1,27 +1,26 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
         
-        indx = k - 1
         
-        
-        def helper(index):
-            
-            if index == 0: 
+        def recur(n):
+            if n == 0:
                 return 0
             
-            if index % 2 == 0 :
-                return helper(index // 2)
+            idx = n 
+            res = recur(idx // 2)
             
-            else: 
-                temp = helper(index // 2)
+            if res == 0 and idx % 2 != 0:
+                return 1
+            
+            if res == 1 and idx % 2 == 0:
+                return 1
                 
-                if temp == 1:
-                    return 0
+            return 0
+        
+        
+        return recur(k - 1)
                 
-                else:
-                    return 1
+            
+            
                 
-            
-        return helper(indx)
-            
-            
+        
