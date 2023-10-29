@@ -10,12 +10,6 @@ class Solution:
         
         letters1 = sorted([key for key, _ in count1.items()])
         letters2 = sorted([key for key, _ in count2.items()])
-        
-#         print(letters1)
-#         print(letters2)
-        
-#         print(freq1)
-#         print(freq2)
-            
+
         return freq1 == freq2 and letters1 == letters2
     
