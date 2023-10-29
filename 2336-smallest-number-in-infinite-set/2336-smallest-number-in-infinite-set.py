@@ -12,9 +12,6 @@ class SmallestInfiniteSet:
 
     def popSmallest(self) -> int:
         
-        if not self.infSet:
-            return 
-        
         num = heappop(self.infSet)
         self.visited.remove(num) 
         
