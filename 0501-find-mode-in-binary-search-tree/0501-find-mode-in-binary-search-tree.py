@@ -7,25 +7,36 @@
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
         
-        dic = defaultdict(int)
-        mode = []
+        count = defaultdict(int)
         
-        def preOrder(node):
-            if not node:
-                return
+        def dfs(node):
+            if not node: return
+            count[node.val] += 1
+            dfs(node.left)
+            dfs(node.right)
             
-            dic[node.val] += 1
             
-            preOrder(node.left)
-            preOrder(node.right)
-            
-        preOrder(root)
+        dfs(root)
+        ans = []
         
-        dic = sorted(dic.items(), key = lambda x: x[1], reverse = True, )
+        count = dict(sorted(count.items(), key = lambda x: x[1], reverse = True))
+       
         
-        i = 0
-        while i < len(dic) and dic[i][1] == dic[0][1]:
-            mode.append(dic[i][0])
-            i += 1
+        start = True
+        
+        for item in count:
+             
+            if start: 
+                ans.append(item) 
+                start = False
+                
+            elif count[item] == count[ans[0]]:
+                ans.append(item)
+                  
+                
+        return ans
             
-        return mode
+        
+                
+                
+            
