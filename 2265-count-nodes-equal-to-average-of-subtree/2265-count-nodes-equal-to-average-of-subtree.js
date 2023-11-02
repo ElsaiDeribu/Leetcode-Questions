@@ -11,31 +11,6 @@
  * @return {number}
  */
         
-        
-//         def dfs(node):
-//             if not node:
-//                 return 0, 0, 0
-            
-//             left = dfs(node.left)
-//             right = dfs(node.right)
-            
-//             resl, suml, cntl = left
-//             resr, sumr, cntr = right
-            
-//             res = resl + resr
-//             sumt = suml + sumr + node.val
-//             cntt = cntl + cntr + 1
-            
-//             mean = sumt // cntt 
-            
-//             if mean == node.val:
-//                 res += 1
-                
-//             return res, sumt, cntt
-        
-        
-//         return dfs(root)[0]
-
 
 
 var averageOfSubtree = function(root) {
