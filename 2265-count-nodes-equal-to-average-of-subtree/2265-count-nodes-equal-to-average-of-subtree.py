@@ -9,32 +9,27 @@ class Solution:
         
         
         
-        def postOrder(node):
-            
+        def dfs(node):
             if not node:
-                return [0, 0, 0]
-#                [sumOfSubTreeVals, CountOfSubTrees, CountOfAvgEqualToValue]
-        
-            left = postOrder(node.left)
-            right = postOrder(node.right)
+                return 0, 0, 0
             
-            total = left[0] + right[0] + node.val
-            count = left[1] + right[1] + 1
-            countOfValid = left[2] + right[2]
+            left = dfs(node.left)
+            right = dfs(node.right)
             
+            resl, suml, cntl = left
+            resr, sumr, cntr = right
             
-            if count > 0:
-                avg = total // count
+            res = resl + resr
+            sumt = suml + sumr + node.val
+            cntt = cntl + cntr + 1
+            
+            mean = sumt // cntt 
+            
+            if mean == node.val:
+                res += 1
                 
-                if avg == node.val:
-                     countOfValid += 1
-                    
-            return [total, count, countOfValid]
+            return res, sumt, cntt
         
         
-        return postOrder(root)[2]
-        
-        
-        
-                
+        return dfs(root)[0]
                 
