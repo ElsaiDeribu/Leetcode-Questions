@@ -1,32 +1,49 @@
-class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(nums, target) {
+    
+    let l = 0
+    let r = nums.length - 1
+    
+    
+    while (l < r){
+        mid = Math.floor((l + r) / 2)
         
-        l = 0
-        r = len(nums) - 1
+        if (nums[mid] > nums[r]){
+            l = mid + 1
+        }else{
+            r = mid
+        }
+    }
+    
+    let binarySearch = (l, r) => {
         
-        while l < r:
-            mid = (l + r) // 2
+        while (l + 1 < r){
+            mid = Math.floor((l + r) / 2)
             
-            if nums[mid] > nums[r]:
-                
-                l = mid + 1
-            else:
+            if (nums[mid] <= target){
+                l = mid
+            }else{
                 r = mid
-                
-            
-        left = bisect_left(nums, target, lo = 0, hi = r - 1 )
-        right = bisect_left(nums, target, lo = r, hi= len(nums) - 1)
-        
-        if left < len(nums) and nums[left] == target:
-            return left
-        
-        if right < len(nums) and nums[right] == target:
-            return right
-        
-        
-        return -1
-        
-        
-        
-        
-        
+            }
+        }
+        return l 
+    } 
+     
+    let leftRes = binarySearch(0, r)
+    let rightRes = binarySearch(r, nums.length)
+    
+    if (nums[leftRes] === target){
+        return leftRes
+    }
+    
+    if (nums[rightRes] === target){
+        return rightRes
+    }
+    
+    return -1
+    
+};
