@@ -4,20 +4,22 @@
  */
 var findMin = function(nums) {
     
-    let l = -1
+    let l = 0
     let r = nums.length - 1
     
-    while (l + 1 < r){
-        mid = Math.floor( (l + r) / 2)
+    while (l < r) {
+    
+        mid = Math.floor((l + r) / 2)
         
-        if (nums[mid] >= nums[0]){
-            l = mid
+        if (nums[mid] >= nums[r]){
+            l = mid + 1
         }
         else{
-            r = mid
+            r = mid 
         }
-    }
-    
-    return Math.min(nums[r], nums[0])
+        
+}
+        return nums[r]
+
     
 };
