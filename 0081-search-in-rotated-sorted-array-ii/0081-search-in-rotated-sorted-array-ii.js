@@ -15,20 +15,20 @@ var search = function(nums, target) {
             return true
         }
         
-        if(nums[l] < nums[mid]){
+        if(nums[r] < nums[mid]){
             if(nums[l] <= target && target < nums[mid]){
                 r = mid - 1
             }else{
                 l = mid + 1
             }
-        }else if(nums[l] > nums[mid]){
+        }else if(nums[r] > nums[mid]){
             if (nums[mid] < target && target <= nums[r]){
                 l = mid + 1
             }else{
                 r = mid - 1
             }
         }else{
-            l += 1
+            r -= 1
         }
                
     }
