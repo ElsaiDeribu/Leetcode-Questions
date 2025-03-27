@@ -5,11 +5,11 @@ class Solution:
 
         for i in range(1, len(words)):
             
-            count = Counter(words[i])
+            current = Counter(words[i])
             
             for c in common:
-                if c in count:
-                    common[c] = min(common[c], count[c])
+                if c in current:
+                    common[c] = min(common[c], current[c])
                 else:
                     common[c] = 0
 
