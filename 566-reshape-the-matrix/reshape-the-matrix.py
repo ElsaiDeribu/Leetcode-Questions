@@ -17,12 +17,8 @@ class Solution:
         curr = 0
 
         for i in range(r):
-            temp = []
-            for j in range(c):
-                temp.append(flat[curr])
-                curr += 1
+            ans.append(flat[i * c : i * c + c])
 
-            ans.append(temp)
 
         return ans
 
