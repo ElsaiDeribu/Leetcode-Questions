@@ -2,16 +2,21 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
 
         n = len(nums)
-        cache = [0] * n
+        cache = [-1] * n
 
-        for i in range(n - 1, -1, -1):
-            
-            next_h = i + 2
+        def backtrack(i):
+            if i >= n:
+                return 0
 
-            rob = nums[i] + (cache[next_h] if next_h < n else 0)
-            not_rob = cache[i + 1] if i + 1 < n else 0
+            if cache[i] != -1:
+                return cache[i]
 
-            cache[i] = max(rob, not_rob)
+            take = nums[i] + backtrack(i + 2)
+            not_take = backtrack(i + 1)
 
-        return cache[0]
+            cache[i] = max(take, not_take)
+
+            return cache[i]
+
+        return backtrack(0)
         
