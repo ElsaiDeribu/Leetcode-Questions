@@ -20,7 +20,7 @@ class Solution:
 
         for i in range(len(heights)):
             cst_l = helper(i, -1, -1)
-            cst_r = helper(i + 1, len(heights), 1)
+            cst_r = helper(i, len(heights), 1)
 
             min_cst = min(min_cst, cst_l + cst_r)
 
