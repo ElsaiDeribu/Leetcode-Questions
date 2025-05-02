@@ -1,19 +1,13 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
 
+
+        dct = defaultdict()
+
         for i in range(len(nums)):
-            nums[i] = (nums[i], i)
+            res = target - nums[i]
 
-        nums.sort()
-        l, r = 0, len(nums) - 1
+            if res in dct:
+                return [dct[res], i]
 
-        while l < r:
-            res = nums[l][0] + nums[r][0]
-
-            if res > target:
-                r -= 1
-            elif res < target:
-                l += 1
-            else:
-                return [nums[l][1], nums[r][1]]
-        
+            dct[nums[i]] = i
