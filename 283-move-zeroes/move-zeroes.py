@@ -3,8 +3,8 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-
-        l = r = 0
+        
+        l, r = 0, 0
 
         while r < len(nums):
 
@@ -13,7 +13,7 @@ class Solution:
                 continue
 
             nums[l], nums[r] = nums[r], nums[l]
-
-            l += 1
             r += 1
-        
+            l += 1
+
+
