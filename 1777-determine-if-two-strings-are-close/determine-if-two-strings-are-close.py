@@ -4,8 +4,6 @@ class Solution:
         count1 = Counter(word1)
         count2 = Counter(word2)
 
-        if count1 == count2:
-            return True
 
         count1_keys = sorted(count1.keys())
         count2_keys = sorted(count2.keys())
