@@ -1,20 +1,24 @@
 class Solution:
     def equalPairs(self, grid: List[List[int]]) -> int:
 
-        rows = defaultdict(list)
-        cols = defaultdict(list)
+        n = len(grid)
+        rows = defaultdict(int)
 
-        for r in range(len(grid)):
-            rows[r] = grid[r]
-            for c in range(len(grid[0])):
-                cols[c].append(rows[r][c])
+
+        for r in range(n):
+            rows[','.join(str(n) for n in grid[r])] += 1
         
-
+        print(rows)
         ans = 0
 
-        for r_key in rows.keys():
-            for c_key in cols.keys():
-                if rows[r_key] == cols[c_key]:
-                    ans += 1
+        for x in range(n):
+            col = []
+            for y in range(n):
+                col.append(grid[y][x])
+
+            col =  ','.join(str(n) for n in col)
+
+            ans += rows[col]
+            
 
         return ans
