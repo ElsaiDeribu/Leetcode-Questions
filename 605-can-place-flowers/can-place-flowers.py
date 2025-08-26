@@ -1,7 +1,8 @@
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
 
-        flowerbed = [0] + flowerbed + [0]
+        flowerbed.append(0)
+        flowerbed.insert(0, 0)
 
         for i in range(1, len(flowerbed) - 1):
 
