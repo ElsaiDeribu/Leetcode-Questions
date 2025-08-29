@@ -6,6 +6,8 @@ class Solution:
         visited = set((entrance[0], entrance[1]))
         steps = 0
 
+        def inbound(r, c):
+            return 0 <= r < len(maze) and 0 <= c < len(maze[0])
 
         while deq:
             for i in range(len(deq)):
@@ -17,7 +19,7 @@ class Solution:
                 for d_r, d_c in dir:
                     row, col = r + d_r, c + d_c
 
-                    if 0 <= row < len(maze) and 0 <= col < len(maze[0]) and  maze[row][col] == "." and (row, col) not in visited:
+                    if inbound(row, col) and  maze[row][col] == "." and (row, col) not in visited:
                         deq.append([row,col])
                         visited.add((row,col))
 
