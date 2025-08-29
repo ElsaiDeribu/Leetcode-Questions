@@ -11,7 +11,7 @@ class Solution:
             for i in range(len(deq)):
                 r, c = deq.popleft()
                 
-                if [r,c] != entrance and ( r >= len(maze) - 1 or c >= len(maze[0]) - 1 or r == 0 or c == 0 ):
+                if [r,c] != entrance and ( r == len(maze) - 1 or c == len(maze[0]) - 1 or r == 0 or c == 0 ):
                     return steps
 
                 for d in dir:
