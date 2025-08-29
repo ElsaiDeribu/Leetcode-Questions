@@ -14,9 +14,8 @@ class Solution:
                 if [r,c] != entrance and ( r == len(maze) - 1 or c == len(maze[0]) - 1 or r == 0 or c == 0 ):
                     return steps
 
-                for d in dir:
-                    row = r + d[0]
-                    col = c + d[1]
+                for d_r, d_c in dir:
+                    row, col = r + d_r, c + d_c
 
                     if 0 <= row < len(maze) and 0 <= col < len(maze[0]) and  maze[row][col] == "." and (row, col) not in visited:
                         deq.append([row,col])
