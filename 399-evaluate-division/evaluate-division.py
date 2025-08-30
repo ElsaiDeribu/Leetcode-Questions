@@ -25,10 +25,13 @@ class Solution:
                         return res
             return -1
 
-        ans = []
-        for a, b in queries:
+        
+        for i in range(len(queries)):
+            a, b = queries[i][0], queries[i][1]
+    
             if a not in graph or b not in graph:
-                ans.append(-1.0)
+                queries[i] = -1.0
             else:
-                ans.append(dfs(a, b, set(), 1.0))
-        return ans
+                queries[i] = dfs(a, b, set(), 1.0)
+
+        return queries
