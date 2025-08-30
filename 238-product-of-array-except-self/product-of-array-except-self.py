@@ -1,8 +1,6 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
 
-
-        
         pref = [1 for _ in range(len(nums))]
         post = [1 for _ in range(len(nums))]
 
