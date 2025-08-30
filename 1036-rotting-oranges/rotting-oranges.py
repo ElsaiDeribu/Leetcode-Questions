@@ -13,7 +13,6 @@ class Solution:
                 if grid[r][c] == 2:
                     visited.add((r,c))
                     deq.append((r,c))
-
                 elif grid[r][c] == 1:
                     fr_cnt += 1
 
