@@ -7,27 +7,24 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
 
-        deq = deque()
         ans = []
 
-        if root:
-            deq.append(root)
-            ans.append(root.val)
-            
 
-        while deq:
+        def dfs(node, layer):
+            if not node:
+                return
 
-            for _ in range(len(deq)):
-                node = deq.popleft()
+            if layer > len(ans) - 1:
+                ans.append(node.val)
 
-                if node.left:
-                    deq.append(node.left)
-                if node.right:
-                    deq.append(node.right)
+            else:
+                ans[layer] = node.val
 
-            if deq:
-                ans.append(deq[-1].val)
+            dfs(node.left, layer + 1)
+            dfs(node.right, layer + 1)
 
+        dfs(root, 0)
 
         return ans
+            
         
