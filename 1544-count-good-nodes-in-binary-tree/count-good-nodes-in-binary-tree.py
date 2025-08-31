@@ -7,19 +7,19 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         
-        self.ans = 0
 
-        def dfs(node, mx):
+        def dfs(node, mx, ans):
             if not node:
-                return
+                return ans
 
+            res_l = dfs(node.left, max(mx, node.val), ans)
+            res_r = dfs(node.right, max(mx, node.val), ans)
 
             if node.val >= mx:
-                self.ans += 1
+                ans += 1
 
-            dfs(node.left, max(mx, node.val))
-            dfs(node.right, max(mx, node.val))
+            return res_l + res_r + ans
 
-        dfs(root, float("-inf"))
 
-        return self.ans
+        return dfs(root, float("-inf"), 0)
+
