@@ -14,18 +14,17 @@ class Solution:
                 return 0
 
             total += node.val
+            count = pref[total - targetSum]
+
             pref[total] += 1
             
-            req = total - targetSum
-
-
             res_l = dfs(pref, total , node.left)
             res_r = dfs(pref, total , node.right)
 
             pref[total] -= 1
 
 
-            return res_l + res_r + pref[req]
+            return res_l + res_r + count
 
         pref = defaultdict(int)
         pref[0] = 1
