@@ -3,6 +3,7 @@ class Solution:
 
         read, write = 0, 0
 
+
         while read < len(chars):
             letter = chars[read]
             count = 0
@@ -19,10 +20,12 @@ class Solution:
                     chars[write] = c
                     write += 1
 
+
             
         return write
+            
 
-                    
+
 
 
         
