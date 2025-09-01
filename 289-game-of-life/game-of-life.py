@@ -9,7 +9,6 @@ class Solution:
         def isinbound(r, c):
             return 0 <= r < len(board) and 0 <= c < len(board[0])
 
-        updates = []
         for r in range(len(board)):
             for c in range(len(board[0])):
                 cnt = 0
@@ -18,19 +17,24 @@ class Solution:
                     row, col = r + d_r, c + d_c
 
                     if isinbound(row, col):
-                        if board[row][col] == 1:
+                        if abs(board[row][col]) == 1:
                             cnt += 1
 
                 if board[r][c] == 1:
                     if cnt < 2 or cnt > 3 :
-                        updates.append((r,c,0))
+                        board[r][c] = -1
 
                 else:
                     if cnt == 3:
-                        updates.append((r,c,1))
+                        board[r][c] = 2
 
-        for r, c, v in updates:
-            board[r][c] = v
+
+        for r in range(len(board)):
+            for c in range(len(board[0])):
+                if board[r][c] == -1:
+                    board[r][c] = 0 
+                elif board[r][c] == 2:
+                    board[r][c] = 1
 
 
 
