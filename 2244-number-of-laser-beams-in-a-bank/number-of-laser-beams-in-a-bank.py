@@ -5,7 +5,10 @@ class Solution:
         prev = 0
 
         for i in range(len(bank)):
-            total = sum(int(s) for s in bank[i])
+            total = 0
+
+            for n in bank[i]:
+                total += int(n)
 
             if prev and total:
 
