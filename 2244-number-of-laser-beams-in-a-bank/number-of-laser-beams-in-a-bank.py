@@ -1,22 +1,15 @@
 class Solution:
     def numberOfBeams(self, bank: List[str]) -> int:
 
-        ans = 0 
-        prev = 0
+        ans, prev = 0, 0
 
-        for i in range(len(bank)):
-            total = 0
+        for row in bank:
+            total = row.count('1')
 
-            for n in bank[i]:
-                total += int(n)
-
-            if prev and total:
-
+            if total:
                 ans += total * prev
                 prev = total
 
-            elif total:
-                prev = total
 
 
         return ans
