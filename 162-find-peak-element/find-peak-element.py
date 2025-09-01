@@ -4,17 +4,19 @@ class Solution:
         l = 0
         r = len(nums) - 1
 
-        while l < r:
+        while l <= r:
 
             m = l + (r - l) // 2
 
-            if nums[m] < nums[m + 1]:
+            if  m < len(nums) - 1 and nums[m] < nums[m + 1] :
                 l = m + 1
 
-            else:
-                r = m
+            elif m > 0 and  nums[m - 1] > nums[m]:
+                r = m - 1
 
-        return l
+            else:
+                return m
+
 
 
 
