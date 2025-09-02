@@ -19,11 +19,8 @@ class Solution:
 
         for r, c , val in updates:
             grid[r][c] = val
-            
-        grid = grid[1:len(grid) - 1]
 
-        for i in range(len(grid)):
-            grid[i] = grid[i][1:len(grid[i]) - 1]
+        grid = [grid[r][1:-1] for r in range(1, len(grid) - 1) ]
 
 
 
