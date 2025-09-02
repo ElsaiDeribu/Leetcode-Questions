@@ -28,10 +28,9 @@ class Trie:
         node = self.trie
 
         for w in word:
-            if w in node.children:
-                node = node.children[w]
-            else:
+            if w not in node.children:
                 return False
+            node = node.children[w]
 
         return node.isend 
         
@@ -41,10 +40,10 @@ class Trie:
         node = self.trie
 
         for w in prefix:
-            if w in node.children:
-                node = node.children[w]
-            else:
+            if w not in node.children:
                 return False
+            
+            node = node.children[w]
 
         return True
         
