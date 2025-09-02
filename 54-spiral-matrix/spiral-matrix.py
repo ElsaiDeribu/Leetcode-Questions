@@ -1,49 +1,49 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
 
-        top = left = 0
-        bottom = len(matrix) - 1
-        right = len(matrix[0]) - 1
-
-        direction = "right"
         ans = []
 
-        while left <= right and bottom >= top:
+        l, t = 0, 0
+        r, b = len(matrix[0]) - 1, len(matrix) - 1
 
-            if direction == "right":
-                for c in range(left, right + 1):
-                    ans.append(matrix[top][c])
-                top += 1
-                direction = "down"
+        d = "r"
 
-            elif direction == "down":
-                for r in range(top, bottom + 1):
-                    ans.append(matrix[r][right])
+        while l <= r and t <= b:
 
-                right -= 1
-                direction = "left"
-
-            elif direction == "left":
-                for c in range(right, left - 1, -1):
-                    ans.append(matrix[bottom][c])
-
-                bottom -= 1
-                direction = "up"
             
-            elif direction == "up":
-                for r in range(bottom, top - 1, -1):
-                    ans.append(matrix[r][left])
-                
-                left += 1
-                direction = "right"
+            if d == "r":
+
+                for i in range(l, r + 1):
+                    ans.append(matrix[t][i])
+
+                t += 1
+                d = "d"
+
+            elif d == "d":
+                for i in range(t, b + 1):
+                    ans.append(matrix[i][r])
+
+                r -= 1
+                d = "l"
+
+            elif d == "l":
+                for i in range(r, l - 1, -1):
+                    ans.append(matrix[b][i])
+
+                b -= 1
+                d = "u"
+
+
+            else:
+                for i in range(b, t - 1, -1):
+                    ans.append(matrix[i][l])
+
+                l += 1
+                d = "r"
+
 
         return ans
-
-
-
-        
-
-
+                
 
 
         
