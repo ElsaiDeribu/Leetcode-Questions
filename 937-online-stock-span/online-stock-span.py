@@ -10,7 +10,7 @@ class StockSpanner:
 
         while self.st and self.st[-1][0] <= price:
 
-            num, c = self.st.pop()
+            _, c = self.st.pop()
             count += c
 
         self.st.append((price, count))
