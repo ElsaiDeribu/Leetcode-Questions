@@ -1,22 +1,20 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
 
-        n = len(nums)
-        cache = [-1] * n
+        @cache
+        def dp(curr, res):
 
-        def backtrack(i):
-            if i >= n:
-                return 0
+            if curr >= len(nums):
+                return res
 
-            if cache[i] != -1:
-                return cache[i]
 
-            take = nums[i] + backtrack(i + 2)
-            not_take = backtrack(i + 1)
+            # take
+            res1 = dp(curr + 2, res + nums[curr])
 
-            cache[i] = max(take, not_take)
+            # not take
+            res2 = dp(curr + 1, res)
 
-            return cache[i]
+            return max(res1, res2)
 
-        return backtrack(0)
-        
+
+        return dp(0,0)
