@@ -11,16 +11,17 @@ class Trie:
 
     def insert(self, word: str) -> None:
         node = self.trie
+
         for w in word:
-            if w not in node.children:
-                node.children[w] = TrieNode()
-            
+            if w in node.children:
+                node = node.children[w]
+                continue
+
+            node.children[w] =TrieNode()
             node = node.children[w]
 
         node.isend = True
-
-        
-
+            
         
 
     def search(self, word: str) -> bool:
@@ -28,22 +29,22 @@ class Trie:
         node = self.trie
 
         for w in word:
-            if w not in node.children:
+            if w in node.children:
+                node = node.children[w]
+            else:
                 return False
-            node = node.children[w]
 
-        return node.isend 
+        return node.isend
         
 
     def startsWith(self, prefix: str) -> bool:
-
         node = self.trie
 
-        for w in prefix:
-            if w not in node.children:
+        for p in prefix:
+            if p in node.children:
+                node = node.children[p]
+            else:
                 return False
-            
-            node = node.children[w]
 
         return True
         
