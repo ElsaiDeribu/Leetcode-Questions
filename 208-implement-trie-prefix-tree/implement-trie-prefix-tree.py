@@ -13,11 +13,8 @@ class Trie:
         node = self.trie
 
         for w in word:
-            if w in node.children:
-                node = node.children[w]
-                continue
-
-            node.children[w] =TrieNode()
+            if w not in node.children:
+                node.children[w] = TrieNode()
             node = node.children[w]
 
         node.isend = True
