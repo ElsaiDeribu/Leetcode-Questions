@@ -18,9 +18,9 @@ class Solution:
             d, di = dr.popleft()
 
             if ri < di:
-                rad.append((d, n + ri))
+                rad.append((r, n + ri))
             else:
-                dr.append((r, n + di))
+                dr.append((d, n + di))
 
         if rad:
             return "Radiant"
