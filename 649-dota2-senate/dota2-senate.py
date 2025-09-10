@@ -1,30 +1,26 @@
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
 
-        rad = deque()
-        dr = deque()
+        rad, dr = deque(), deque()
         n = len(senate)
 
         for i, v in enumerate(senate):
             if v == "R":
-                rad.append((v,i))
+                rad.append(i)
             else:
-                dr.append((v,i))
+                dr.append(i)
 
 
         while rad and dr:
 
-            r, ri = rad.popleft()
-            d, di = dr.popleft()
+            ri, di = rad.popleft(), dr.popleft()
 
             if ri < di:
-                rad.append((r, n + ri))
+                rad.append(n + ri)
             else:
-                dr.append((d, n + di))
+                dr.append(n + di)
 
-        if rad:
-            return "Radiant"
-
-        return "Dire"
+        
+        return "Radiant" if rad else "Dire"
 
 
