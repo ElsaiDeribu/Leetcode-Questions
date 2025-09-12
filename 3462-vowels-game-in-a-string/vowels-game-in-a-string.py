@@ -4,13 +4,11 @@ class Solution:
 
         vowels = ["a","e", "i", "o", "u"]
 
-        c = 0
-
         for l in s:
             if l in vowels:
-                c += 1
+                return True
 
-        return True if c else False
+        return False
 
         
 
