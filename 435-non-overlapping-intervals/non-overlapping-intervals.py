@@ -2,23 +2,16 @@ class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
 
         intervals.sort(key = lambda x: x[1])
-        print(intervals)
-        ans = []
+        last_interval = [None, None]
         res = 0
 
-        for i in intervals:
-            if not ans:
-                ans.append(i)
-                continue
-
-            a, _ = i
-
-            if ans[-1][0] > a or ans[-1][1] > a:
-
+        for start, end in intervals:
+            if last_interval[0] != None and (last_interval[0] > start or last_interval[1] > start):
                 res += 1
 
             else:
-                ans.append(i)
+                last_interval[0], last_interval[1] = start, end
+
 
         return res
 
