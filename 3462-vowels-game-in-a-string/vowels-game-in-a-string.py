@@ -1,9 +1,5 @@
 class Solution:
     def doesAliceWin(self, s: str) -> bool:
-
-
-        return any(c in "aeiou" for c in s)
-
         
-
-        
+        vowels = {"a", "e", "i", "o", "u"}
+        return any(c in vowels for c in s)
