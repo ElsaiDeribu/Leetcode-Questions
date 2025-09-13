@@ -7,7 +7,7 @@ class Solution:
         max_cons = 0
 
         for ch in s:
-            idx = ord(ch) - ord('a')
+            idx = ord(ch) - 97
             freq[idx] += 1
 
             if ch in vowels:
