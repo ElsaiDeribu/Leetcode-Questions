@@ -3,12 +3,8 @@ class Solution:
 
         count = Counter(nums)
 
-        count = list(sorted(count.items(), key = lambda x: x[1], reverse=True))
+        largest = max(count.values())
 
-        ans = count[0][1]
+        count = Counter(count.values())
 
-        for i in range(1, len(count)):
-            if count[i][1] == count[0][1]:
-                ans += count[i][1]
-
-        return ans
+        return largest * count[largest]
