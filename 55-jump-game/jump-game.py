@@ -4,11 +4,13 @@ class Solution:
 
         largest = 0
 
-        for i, n in enumerate(nums):
-
+        for i in range(len(nums) - 1):
+            n = nums[i]
             largest = max(largest, n)
-            if i != len(nums) - 1 and largest == 0:
+
+            if largest == 0:
                 return False
+                
             largest -= 1
 
         return True
