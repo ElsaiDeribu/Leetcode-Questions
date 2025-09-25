@@ -3,11 +3,16 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        
-        new_pos = {}
 
-        for i, num in enumerate(nums):
-            new_pos[(i + k) % len(nums)] = num
+        def reverse(l, r):
+            while l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r -= 1
 
-        for key, value in new_pos.items():
-            nums[key] = value
+        n = len(nums)
+        k %= n
+
+        reverse(0, n - 1) 
+        reverse(0, k - 1)
+        reverse(k, n - 1)
