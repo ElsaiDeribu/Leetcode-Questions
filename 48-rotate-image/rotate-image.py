@@ -5,10 +5,10 @@ class Solution:
         """
 
         for r in range(len(matrix)):
-            for c in range(r, len(matrix[0])):
-                matrix[r][c], matrix[c][r] =  matrix[c][r], matrix[r][c]
+            for c in range(r + 1, len(matrix[0])):
+                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
 
-
-        for i in range(len(matrix)):
-            matrix[i].reverse()
-
+        for row in matrix:
+            n = len(row)
+            for i in range((n + 1)// 2):
+                row[i], row[n - i - 1] = row[n - i - 1], row[i]
