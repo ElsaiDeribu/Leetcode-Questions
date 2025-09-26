@@ -3,33 +3,19 @@ class Solution:
         
         ans = []
 
-        def recur(total, res):
+        def dfs(i, total, path):
             if total == target:
-                ans.append(res.copy())
-
-            if total > target:
+                ans.append(path[:])
+                return
+            if total > target or i == len(candidates):
                 return
 
-            for num in candidates:
-                recur(total + num, res + [num])
+            # Choose the current candidate
+            dfs(i, total + candidates[i], path + [candidates[i]])
+            # Skip to the next candidate
+            dfs(i + 1, total, path)
 
-        recur(0, [])
-
-        res = set()
-
-        for item in ans:
-            res.add(tuple(sorted(Counter(item).items())))
-
-        ans = []
-
-        for tp in res:
-            temp = []
-            for val, freq in tp:
-                temp += ([val] * freq)
-
-            ans.append(temp)
-
+        dfs(0, 0, [])
         return ans
-
 
 
