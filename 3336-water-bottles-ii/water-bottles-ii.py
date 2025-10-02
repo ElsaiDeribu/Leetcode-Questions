@@ -2,14 +2,18 @@ class Solution:
     def maxBottlesDrunk(self, numBottles: int, numExchange: int) -> int:
             
         total = numBottles
-        emptyBottles = numBottles
 
         while numBottles >= numExchange:
 
+            # exchange bottles
             numBottles -= numExchange
-            numExchange += 1
             numBottles += 1
+
+            # drink the exchanged bottle
             total += 1
+            
+            numExchange += 1
+
 
 
         return total
