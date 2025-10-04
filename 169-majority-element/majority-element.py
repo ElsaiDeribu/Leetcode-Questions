@@ -2,8 +2,14 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
 
 
-        count = Counter(nums)
+        count = 0
+        num = None
 
-        for key, val in count.items():
-            if val > len(nums) / 2:
-                return key
+        for n in nums:
+
+            if count == 0:
+                num = n
+            
+            count += 1 if n == num else -1
+
+        return num
