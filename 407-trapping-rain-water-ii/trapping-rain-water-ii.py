@@ -20,6 +20,7 @@ class Solution:
                 heapq.heappush(heap, (heightMap[r][c], r, c))
                 visited.add((r,c))
 
+
         while heap:
 
             val, row, col = heapq.heappop(heap)
