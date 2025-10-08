@@ -3,17 +3,10 @@ class Solution:
 
         potions.sort()
 
-      
-
-        for i in range(len(spells)):
-
-            idx = bisect_left(potions, success/spells[i])
-            spells[i] = len(potions) - idx
+        for idx, val in enumerate(spells):
+            l = bisect.bisect_left(potions, success / val )
+            spells[idx] = len(potions) - l
 
         return spells
-
-
-
-
-
+        
         
