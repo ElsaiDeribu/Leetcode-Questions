@@ -1,13 +1,23 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        
 
-        for row in matrix:
+        m, n = len(matrix), len(matrix[0])
+        l, r = 0, m * n
 
-            idx = bisect_left(row ,target)
+        while l < r:
+            mid = l + (r - l) // 2
 
-            if 0 <= idx < len(row) and row[idx] == target:
+            row = mid // n
+            col = mid % n
+
+            if matrix[row][col] == target:
                 return True
+
+            if matrix[row][col] < target:
+                l = mid + 1
+            else:
+                r = mid
 
 
         return False
+        
