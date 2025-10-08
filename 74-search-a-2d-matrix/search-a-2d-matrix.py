@@ -10,14 +10,11 @@ class Solution:
             row = mid // n
             col = mid % n
 
-            if matrix[row][col] == target:
-                return True
-
             if matrix[row][col] < target:
                 l = mid + 1
             else:
                 r = mid
 
 
-        return False
+        return matrix[r // n][r % n] == target if r < m * n else False
         
