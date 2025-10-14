@@ -14,10 +14,10 @@ class Solution:
             if not node:
                 return
 
-            if layer > len(ans) - 1:
+            if len(ans) - 1 < layer:
                 ans.append(node.val)
 
-            else:
+            else: 
                 ans[layer] = node.val
 
             dfs(node.left, layer + 1)
@@ -26,5 +26,3 @@ class Solution:
         dfs(root, 0)
 
         return ans
-            
-        
