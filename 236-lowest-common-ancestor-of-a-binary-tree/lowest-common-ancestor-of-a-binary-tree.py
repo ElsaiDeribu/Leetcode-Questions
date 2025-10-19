@@ -25,8 +25,7 @@ class Solution:
             if left:
                 return left
 
-            if right:
-                return right
+            return right
 
 
         return dfs(root)
