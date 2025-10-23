@@ -1,9 +1,9 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
 
-        look_up = defaultdict(int)
+        look_up = set()
 
-        while look_up[n] <= 1:
+        while True:
 
             n = str(n)
             total = 0
@@ -14,7 +14,10 @@ class Solution:
             if total == 1:
                 return True
 
-            look_up[total] += 1
+            if total in look_up:
+                return False
+
+            look_up.add(total)
 
             n = total
 
