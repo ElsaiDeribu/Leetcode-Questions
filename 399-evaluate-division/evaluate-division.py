@@ -1,37 +1,36 @@
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
 
-        adj_list = defaultdict(lambda:defaultdict(float))
+        adj_list = defaultdict(dict)
 
-        for i in range(len(equations)):
-            a, b = equations[i][0], equations[i][1]
-            adj_list[a][b] = values[i]
-            adj_list[b][a] = 1 / values[i]
+        for (a, b), val in zip(equations, values):
+            adj_list[a][b] = val
+            adj_list[b][a] = 1 / val
 
 
-        def dfs(curr, req, product, visited):
-            
-            if curr not in adj_list:
-                return -1 
-                
+        def dfs(curr, target, visited):
+
+            if curr == target:
+                return 1
+
             visited.add(curr)
 
-            if curr == req:
-                return product
+            for nebr, val  in adj_list[curr].items():
+                if nebr not in visited: 
+                    res = dfs(nebr, target, visited)
 
-
-            for child in adj_list[curr]:
-                if child not in visited: 
-                    res = dfs(child, req, product * adj_list[curr][child], visited)
-
-                    if res != -1:
-                        return res
+                    if res != -1: return res * val
 
             return -1
 
+
         ans = []
+
         for a, b in queries:
-            ans.append(dfs(a, b, 1, set()))
+            if a not in adj_list or b not in adj_list:
+                ans.append(-1)
+            else:
+                ans.append(dfs(a, b, set()))
 
 
         return ans
