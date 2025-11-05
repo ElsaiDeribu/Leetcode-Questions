@@ -1,37 +1,43 @@
-from collections import defaultdict
-from typing import List
-
 class Solution:
-    def calcEquation(
-        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
-    ) -> List[float]:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
 
-        # Build graph: adjacency list with weights
-        graph = defaultdict(dict)
+        adj_list = defaultdict(lambda:defaultdict(float))
 
-        for (a, b), val in zip(equations, values):
-            graph[a][b] = val
-            graph[b][a] = 1 / val
+        for i in range(len(equations)):
+            a, b = equations[i][0], equations[i][1]
+            adj_list[a][b] = values[i]
+            adj_list[b][a] = 1 / values[i]
 
-        def dfs(curr, target, visited, acc):
-            if curr == target:
-                return acc
+
+        def dfs(curr, req, product, visited):
+            
+            if curr not in adj_list:
+                return -1 
+                
             visited.add(curr)
 
-            for nei, val in graph[curr].items():
-                if nei not in visited:
-                    res = dfs(nei, target, visited, acc * val)
+            if curr == req:
+                return product
+
+
+            for child in adj_list[curr]:
+                if child not in visited: 
+                    res = dfs(child, req, product * adj_list[curr][child], visited)
+
                     if res != -1:
                         return res
+
             return -1
 
-        
-        for i in range(len(queries)):
-            a, b = queries[i][0], queries[i][1]
-    
-            if a not in graph or b not in graph:
-                queries[i] = -1.0
-            else:
-                queries[i] = dfs(a, b, set(), 1.0)
+        ans = []
+        for a, b in queries:
+            ans.append(dfs(a, b, 1, set()))
 
-        return queries
+
+        return ans
+
+
+
+
+
+        
