@@ -11,31 +11,36 @@ class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         
 
-        dummy = curr = Node(0)
-        main_curr = head
-        dic = {}
+        if not head:
+            return None
 
-        while main_curr:
 
-            curr.next = Node(main_curr.val)
-            dic[main_curr] = curr.next
-            
+        curr = head
+        while curr:
+            new_node = Node(curr.val, curr.next)
+            curr.next = new_node
+            curr = new_node.next
+
+
+        curr = head
+        while curr:
+
+            if curr.random:
+                curr.next.random = curr.random.next
+
+            curr = curr.next.next
+
+
+        curr = head.next
+        while curr.next:
+            curr.next =  curr.next.next
             curr = curr.next
-            main_curr = main_curr.next
 
-        curr = dummy.next
-        main_curr = head
 
-        while main_curr:
-
-            if main_curr.random:
-                curr.random = dic[main_curr.random]
-
-            curr = curr.next
-            main_curr = main_curr.next
+        return head.next
 
 
 
-        return dummy.next
+
 
 
