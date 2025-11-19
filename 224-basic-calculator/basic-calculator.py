@@ -1,47 +1,41 @@
 class Solution:
     def calculate(self, s: str) -> int:
 
-        def cal(val):
-            res = 0
-            operation = 1
-            for v in val:
-                if v not in "+-": res += (operation * int(v))
-                elif v == "+": operation = 1
-                elif v == "-": operation = -1
-
-            return str(res)
-
-        num = ""
+        num = 0
         st = []
+        total = 0
+        sign = 1
 
         for val in s:
             if val.isdigit():
-                num += val
+                num = ((num * 10) + int(val))
 
+            elif val in "-+":
+                total += (sign * num)
+                num = 0
+                sign = -1 if val == "-" else 1
 
-            elif val in "+-(":
-                if num: st.append(num);num = ""
-                st.append(val)
+            elif val == "(":
+                st.append(total)
+                st.append(sign)
+                total = 0
+                sign = 1
 
 
             elif val == ")":
-                temp = deque([])
+                total += (sign * num)
+                num = 0
+                total *= st.pop()
+                total += st.pop()
 
-                if num: st.append(num);num = ""
 
-                while st[-1] != "(":
-                    temp.appendleft(st.pop())
+        return total + sign * num
 
-                st.pop()
-                st.append(cal(temp))
-
-        if num:
-            st.append(num)
-
-        return int(cal(st))
+                
 
 
 
 
 
-            
+
+
