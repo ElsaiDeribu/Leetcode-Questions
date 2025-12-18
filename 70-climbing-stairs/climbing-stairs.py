@@ -1,17 +1,10 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
         
-        dic = {}
-
-        def dp(curr):
-            if curr in dic:
-                return dic[curr]
-
-            if curr >= n:
-                return 1 if curr == n else 0
-
-            dic[curr] = dp(curr + 2) + dp(curr + 1)
-            
-            return dic[curr]
-
-        return dp(0)
+        a, b = 1, 2
+        for _ in range(3, n + 1):
+            a, b = b, a + b
+        
+        return b
