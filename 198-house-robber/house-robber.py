@@ -1,20 +1,13 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        
 
-        @cache
-        def dp(curr):
+        prev2, prev1 = 0, 0
 
-            if curr >= len(nums):
-                return 0
+        for num in nums:
+            curr = max(prev1, prev2 + num)
+            prev2 = prev1
+            prev1 = curr
 
+        return prev1
 
-            # take
-            res1 = dp(curr + 2) + nums[curr]
-
-            # not take
-            res2 = dp(curr + 1)
-
-            return max(res1, res2)
-
-
-        return dp(0)
