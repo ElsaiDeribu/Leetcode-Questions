@@ -1,6 +1,9 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
 
+        # TC:O(n²)
+        # SC:O(n)
+
         wordDict = set(wordDict)
 
         @cache
