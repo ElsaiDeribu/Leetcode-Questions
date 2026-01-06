@@ -1,20 +1,21 @@
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
 
-        trip = [float("inf"), float("inf")]
-
+        i = j = k = float("inf")
 
         for n in nums:
+            if n <= i:
+                i = n
 
-            if n <= trip[0]:
-                trip[0] = n
-
-            elif n <= trip[1]:
-                trip[1] = n
+            elif n <= j:
+                j = n
 
             else:
-                return True
+                k = n
 
+        if i == float("inf") or j == float("inf") or k == float("inf"):
+            return False
 
-        return False
+        return True
+
         
