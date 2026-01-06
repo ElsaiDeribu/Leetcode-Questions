@@ -1,7 +1,7 @@
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
 
-        i = j = k = float("inf")
+        i = j = float("inf")
 
         for n in nums:
             if n <= i:
@@ -11,11 +11,9 @@ class Solution:
                 j = n
 
             else:
-                k = n
+                return True
 
-        if i == float("inf") or j == float("inf") or k == float("inf"):
-            return False
 
-        return True
+        return False
 
         
