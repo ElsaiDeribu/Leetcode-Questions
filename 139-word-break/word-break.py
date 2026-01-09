@@ -11,12 +11,11 @@ class Solution:
             if idx >= len(s):
                 return True
 
-            res = False
             for i in range(idx, len(s)):
-                if s[idx:i + 1] in wordDict:
-                    res = res or dp(i + 1)
+                if s[idx:i + 1] in wordDict and dp(i + 1):
+                    return True
 
-            return res
+            return False
                 
 
         return dp(0)
