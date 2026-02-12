@@ -4,22 +4,15 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         
-        l , r = m  - 1, n - 1
-        update = len(nums1) - 1
+        n1, n2, update = m - 1, n - 1, len(nums1) - 1
 
-        while l >= 0 or r >= 0:
+        while n1 >= 0 or n2 >= 0:
 
-            if (l < 0 ) or (r >= 0 and nums1[l] < nums2[r]):
-                nums1[update] = nums2[r]
-                update -= 1
-                r -= 1
- 
+            if n2 < 0 or (n1 >= 0 and nums1[n1] > nums2[n2]):
+                nums1[update] = nums1[n1]
+                n1 -= 1
             else:
-                nums1[update] = nums1[l]
-                update -= 1
-                l -= 1
-
-        
-
-
-
+                nums1[update] = nums2[n2]
+                n2 -= 1
+                
+            update -= 1
