@@ -1,7 +1,5 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        
-        visited = set()
 
         l = 0
 
@@ -11,4 +9,6 @@ class Solution:
                 l += 1
                 nums[l] = nums[r]
 
+
         return l + 1
+        
