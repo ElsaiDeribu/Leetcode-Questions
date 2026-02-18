@@ -1,30 +1,16 @@
 class Solution:
     def check(self, nums: List[int]) -> bool:
 
-        lower_bar = nums[0]
-        upper_bar = float("inf")
-        updates = 1
+        updates = 0
+        n = len(nums)
 
-        for i in range(1, len(nums)):
+        for i in range(n):
 
-
-            if nums[i] < nums[i - 1]:
-                if nums[i] > lower_bar:
+            if nums[i] > nums[(i + 1) % n]:
+                updates += 1
+                if updates > 1:
                     return False
-
-                if updates:
-                    lower_bar = nums[i]
-                    upper_bar = nums[0]
-                    updates = 0
-                else:
-                    return False
-
-            if not (lower_bar <= nums[i] <= upper_bar):
-                return False
-
-    
-            
 
         return True
 
-        
+                
