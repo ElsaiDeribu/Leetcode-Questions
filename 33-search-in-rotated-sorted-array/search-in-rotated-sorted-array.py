@@ -11,7 +11,7 @@ class Solution:
             if nums[m] == target:
                 return m
 
-            if nums[m] <= nums[r]:
+            if nums[m] < nums[r]:
 
                 if nums[m] < target <= nums[r]:
                     l = m + 1
