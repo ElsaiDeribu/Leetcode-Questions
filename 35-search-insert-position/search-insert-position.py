@@ -5,16 +5,13 @@ class Solution:
 
         while l < r:
 
-            m = l + (r - l) // 2
+            m = (l + r) // 2
 
-            if nums[m] == target:
-                return m
-
-            if nums[m] > target:
-                r = m 
-
-            else:
+            if nums[m] < target:
                 l = m + 1
 
-        return r
+            else:
+                r = m
+
+        return l
         
