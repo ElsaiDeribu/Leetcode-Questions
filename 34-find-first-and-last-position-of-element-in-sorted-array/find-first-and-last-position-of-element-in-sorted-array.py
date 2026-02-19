@@ -1,36 +1,45 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
 
-        
         if not nums:
             return [-1, -1]
 
-        l, r = 0, len(nums) - 1
-        ans = []
 
-        while l < r:
-            m = l + (r - l) // 2
+        def bisect_lft(target):
 
-            if nums[m] < target:
-                l = m + 1
-            else:
-                r = m
+            l, r = 0, len(nums)
 
-        ans.append(r if nums[r] == target else -1)
+            while l < r:
+                m = (l + r) // 2
+
+                if nums[m] < target:
+                    l = m + 1
+                else:
+                    r = m
+
+            return l
 
 
-        l, r = 0, len(nums) - 1
 
-        while l <= r:
-            m = l + (r - l) // 2
+        def bisect_rgt(target):
 
-            if nums[m] <= target:
-                l = m + 1
-            else:
-                r = m - 1
+            l, r = 0, len(nums)
 
-        ans.append(l - 1 if nums[l - 1] == target else -1)
+            while l < r:
+                m = (l + r) // 2
 
-        return ans
+                if nums[m] <= target:
+                    l = m + 1
+                else: 
+                    r = m
 
+            return l
+
+        left = bisect_lft(target)
+        right = bisect_rgt(target) - 1 
         
+        if left > right:
+            return [-1, -1]
+
+
+        return [left, right]
