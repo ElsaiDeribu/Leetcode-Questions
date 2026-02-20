@@ -2,27 +2,27 @@ class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
 
 
-        r = 0
+        i = 0
         ans = []
 
 
-        while r < len(nums):
+        while i < len(nums):
 
-            l = r
+            l = i
 
-            while r + 1 < len(nums) and nums[r + 1] - nums[r] == 1:
-                r += 1
+            while i + 1 < len(nums) and nums[i + 1] - nums[i] == 1:
+                i += 1
 
-            if r == l:
+            if i == l:
                 ans.append(str(nums[l]))
 
             else:
                 a = str(nums[l])
                 b = "->"
-                c = str(nums[r])
+                c = str(nums[i])
                 ans.append(a + b + c)
 
-            r += 1
+            i += 1
 
         return ans
 
