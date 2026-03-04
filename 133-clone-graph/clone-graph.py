@@ -21,7 +21,6 @@ class Solution:
 
 
         while deq:
-
             for _ in range(len(deq)):
                 curr_node = deq.popleft()
 
