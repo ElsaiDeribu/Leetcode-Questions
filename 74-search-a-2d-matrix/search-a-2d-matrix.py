@@ -6,7 +6,7 @@ class Solution:
 
         while L <= R:
 
-            mid = L + (R - L) // 2
+            mid = (L + R ) // 2
 
             r = mid // n
             c = mid % n
