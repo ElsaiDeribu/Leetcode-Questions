@@ -2,11 +2,11 @@ class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
 
         m, n = len(matrix), len(matrix[0])
-        L, R = 0, m * n - 1
+        L, R = 0, m * n
 
-        while L <= R:
+        while L < R:
 
-            mid = (L + R ) // 2
+            mid = (L + R) // 2
 
             r = mid // n
             c = mid % n
@@ -15,7 +15,7 @@ class Solution:
                 return True
 
             if matrix[r][c] > target:
-                R = mid - 1
+                R = mid
             else:
                 L = mid + 1
 
