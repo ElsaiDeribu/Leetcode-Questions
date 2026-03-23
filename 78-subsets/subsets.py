@@ -1,24 +1,26 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
+        nums.sort()
+
         ans = []
-        pile = []
+        subset = []
 
         def dfs(idx):
 
-            if idx == len(nums):
-                ans.append(pile.copy())
-                return
-            
-            #take
-            pile.append(nums[idx])
-            dfs(idx + 1)
-            pile.pop()
- 
-            #not take
-            dfs(idx + 1)
+            ans.append(subset.copy())
 
+            for i in range(idx, len(nums)):
 
+                if i > idx and nums[i] == nums[i - 1]:
+                    continue
+
+                subset.append(nums[i])
+                dfs(i + 1)
+                subset.pop()
+    
+
+    
         dfs(0)
 
         return ans
