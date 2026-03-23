@@ -1,27 +1,27 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
 
-        ans = set()
+
+        nums.sort()
+        ans = []
         subset = []
 
 
         def dfs(idx):
-            if idx == len(nums):
-                ans.add(tuple(sorted(subset.copy())))
-                return
+            ans.append(subset.copy())
 
-            # take
-            subset.append(nums[idx])
-            dfs(idx + 1)
-            subset.pop()
+            for i in range(idx, len(nums)):
+                if i > idx and nums[i] == nums[i - 1]:
+                    continue
 
-            # not take
-            dfs(idx + 1)            
+                subset.append(nums[i])
+                dfs(i + 1)
+                subset.pop()
 
         dfs(0)
 
 
-        return [list(entry) for entry in ans]
+        return ans
 
 
         
