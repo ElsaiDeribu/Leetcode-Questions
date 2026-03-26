@@ -10,7 +10,6 @@ class Solution:
         def dfs(idx):
 
             if idx == len(digits):
-                print(comb)
                 ans.append(''.join(comb.copy())) if comb else None
                 return
 
