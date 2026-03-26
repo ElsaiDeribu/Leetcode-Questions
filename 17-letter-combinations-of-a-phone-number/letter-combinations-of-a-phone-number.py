@@ -1,22 +1,26 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
 
+        map = {"2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
 
-        letter_comb = {"2":"abc", "3": "def", "4": "ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
 
         ans = []
+        comb = []
 
-        def dfs(comb, idx):
-            if len(comb) == len(digits):
-                ans.append(''.join(comb))
+        def dfs(idx):
+
+            if idx == len(digits):
+                print(comb)
+                ans.append(''.join(comb.copy())) if comb else None
                 return
 
-            for letter in letter_comb[digits[idx]]:
-                dfs(comb + [letter], idx + 1)
+            
+            for l in map[digits[idx]]:
+                comb.append(l)
+                dfs(idx + 1)
+                comb.pop()
 
 
-        dfs([], 0)
+        dfs(0)
 
         return ans
-            
-        
