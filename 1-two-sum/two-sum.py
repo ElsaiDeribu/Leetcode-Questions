@@ -1,13 +1,16 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
 
-        dic = {}
+        
+        seen = defaultdict(int)
 
+        for idx, num in enumerate(nums):
 
-        for idx, val in enumerate(nums):
-            if target - val in dic:
-                return [idx, dic[target - val]]
+            wanted = target - num
 
-            dic[val] = idx
+            if wanted in seen:
+                return [seen[wanted], idx]
 
+            seen[num] = idx
+        
         
