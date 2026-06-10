@@ -1,23 +1,25 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 
-        # TC: O(nlogk)
+        # TC: O(n)
         # SC: O(n)
 
         count = Counter(nums)
-        heap = []
-        ans = []
+        freq_groups = [[] for _ in range(len(nums) + 1)]
 
         for num, freq in count.items():
-            heappush(heap, (freq, num))
+            freq_groups[freq].append(num)
+        
+        
+        ans = []
 
-            if len(heap) > k:
-                heappop(heap)
+        for i in range(len(freq_groups) - 1, -1, -1):
 
+            for num in freq_groups[i]:
+                ans.append(num)
 
-        return [num for freq, num in heap]
-
-
+                if len(ans) == k:
+                    return ans
 
 
 
