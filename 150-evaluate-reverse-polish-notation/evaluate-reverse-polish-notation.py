@@ -1,22 +1,25 @@
-import operator
-
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        ops = {
-            "+": operator.add,
-            "-": operator.sub,
-            "*": operator.mul,
-            "/": lambda a, b: int(a / b)
-        }
-        
-        stack = []
-        
-        for t in tokens:
-            if t in ops:
-                b = stack.pop()
-                a = stack.pop()
-                stack.append(ops[t](a, b))
+
+        st = []
+
+        for token in tokens:
+            if token in {"+", "-", "*", "/"}:
+                op2 = st.pop()
+                op1 = st.pop()
+
+                if token == "+":
+                    st.append(op1 + op2)
+                elif token == "-":
+                    st.append(op1 - op2)
+                elif token == "*":
+                    st.append(op1 * op2)
+                elif token == "/":
+                    st.append(int(op1 / op2))
             else:
-                stack.append(int(t))
+                st.append(int(token))
+
+
+        return st[0]
+
         
-        return stack[-1]
