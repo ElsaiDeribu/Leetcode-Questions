@@ -5,21 +5,20 @@ class Solution:
 
 
         while l <= r:
-
-            m = l + (r - l) // 2
+            m = (l + r) // 2
 
             if nums[m] == target:
                 return m
 
+            # check if we hare on the left or right hemisphere
             if nums[m] < nums[r]:
-
+                # right hem
                 if nums[m] < target <= nums[r]:
                     l = m + 1
                 else:
                     r = m - 1
-
             else:
-
+                # left hem
                 if nums[l] <= target < nums[m]:
                     r = m - 1
                 else:
@@ -27,4 +26,3 @@ class Solution:
 
 
         return -1
-        
