@@ -5,7 +5,7 @@ class Solution:
         left, right = 1, max(piles)
 
 
-        def check(rate):
+        def calc_time(rate):
             time_taken = 0
             # time(hr) = pile(b)/rate(b/hr)
             for pile in piles:
@@ -17,8 +17,8 @@ class Solution:
         while left <= right:
             mid = (left + right) // 2
 
-            if check(mid) <= h:
-                right  = mid - 1
+            if calc_time(mid) <= h:
+                right = mid - 1
             else:
                 left = mid + 1
 
