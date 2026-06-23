@@ -2,28 +2,28 @@ class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
 
 
-        def check(banana_p_hour):
+        left, right = 1, max(piles)
 
-            hours = 0
 
+        def check(rate):
+            time_taken = 0
+            # time(hr) = pile(b)/rate(b/hr)
             for pile in piles:
-                hours += ceil(pile/banana_p_hour)
+                time_taken += math.ceil(pile/rate)
 
-            return hours
+            return time_taken
 
 
-        l = 1
-        r = max(piles)
+        while left <= right:
+            mid = (left + right) // 2
 
-        while l <= r:
-            m = (l + r) // 2
-
-            if check(m) <= h:
-                r = m - 1
+            if check(mid) <= h:
+                right  = mid - 1
             else:
-                l = m + 1
+                left = mid + 1
 
-        
-        return l
+
+
+        return left
 
         
