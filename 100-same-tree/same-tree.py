@@ -17,7 +17,13 @@ class Solution:
             if node1.val != node2.val: return False
 
             left = dfs(node1.left, node2.left)
+            # pruning (makes no difference for asymptotic time complexity)
+            if left == False: return False
+
+
             right = dfs(node1.right, node2.right)
+            # pruning (makes no difference for asymptotic time complexity)
+            if right == False: return False
 
 
             return left and right
