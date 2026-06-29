@@ -9,16 +9,18 @@ class Solution:
         
 
         def dfs(node):
-            if not node: return 0, True
+            if not node: return 0
 
-            left_d, l_val = dfs(node.left)
-            right_d, r_val = dfs(node.right)
+            left_d = dfs(node.left)
+            if left_d == -1: return -1
 
-            if abs(left_d - right_d) > 1:
-                return 0, False
+            right_d = dfs(node.right)
+            if right_d == -1: return -1
 
-            return max(left_d, right_d) + 1, l_val and r_val
+            if abs(left_d - right_d) > 1: return -1
+
+            return max(left_d, right_d) + 1
 
 
-        return dfs(root)[1]
+        return dfs(root) != -1
 
