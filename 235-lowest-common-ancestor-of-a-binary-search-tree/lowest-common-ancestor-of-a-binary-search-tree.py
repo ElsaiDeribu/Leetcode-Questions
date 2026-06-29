@@ -12,8 +12,8 @@ class Solution:
         def dfs(node):
             if not node: return None
 
-            if node == p: return node
-            if node == q: return node
+            if node is p: return node
+            if node is q: return node
 
             left = dfs(node.left)
             right = dfs(node.right)
