@@ -9,20 +9,19 @@ class Solution:
 
         ans = []
 
+        def dfs(node, h):
+            if not node: return 
 
-        def dfs(node, layer):
-            if not node:
-                return
-
-            if len(ans) - 1 < layer:
+            h += 1
+            if len(ans) < h:
                 ans.append(node.val)
 
-            else: 
-                ans[layer] = node.val
-
-            dfs(node.left, layer + 1)
-            dfs(node.right, layer + 1)
+            ans[h - 1] = node.val
+            
+            dfs(node.left, h)
+            dfs(node.right, h)
 
         dfs(root, 0)
 
         return ans
+        
