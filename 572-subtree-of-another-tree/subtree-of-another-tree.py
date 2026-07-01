@@ -16,31 +16,21 @@ class Solution:
 
             if node1.val != node2.val: return False
 
-            left = check(node1.left, node2.left)
-            # pruning (makes no difference for asymptotic time complexity)
-            if left == False: return False
-
-            right = check(node1.right, node2.right)
+            return check(node1.left, node2.left) and check(node1.right, node2.right)
   
-            return  right
 
 
 
-
-        def dfs(node1, node2):
-            if not node1: return False
+        def dfs(node):
+            if not node: return False
   
-            if check(node1, node2) == True: return True
+            if check(node, subRoot): return True
 
-            left = dfs(node1.left, node2)
-            if left == True: return True
-
-            right = dfs(node1.right, node2)
-
-            return right
+            return dfs(node.left) or dfs(node.right)
 
 
-        return dfs(root, subRoot)
+
+        return dfs(root)
         
 
         
