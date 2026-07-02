@@ -21,8 +21,7 @@ class TimeMap:
             else:
                 r = m - 1
 
-        if l == 0 and self.dic[key][l][0] > timestamp:
-            return ''
+        if l == 0: return ''
 
 
         return self.dic[key][l - 1][1]
