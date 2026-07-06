@@ -12,10 +12,7 @@ class Solution:
             small = -heappop(stones)
 
             if large != small:
-
-                ans = max(large, small) - min(large, small)
-
-                heappush(stones, -ans)
+                heappush(stones, -(large - small))
 
         if len(stones) == 1:
             return -stones[0]
