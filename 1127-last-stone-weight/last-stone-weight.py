@@ -1,6 +1,9 @@
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
 
+
+        # TC: O(nlogn)
+        # SC: O(n)
         for idx, val in enumerate(stones):
             stones[idx] = -val
 
