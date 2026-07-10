@@ -5,13 +5,18 @@ class Solution:
         st = []
 
         def dfs(idx):
-    
-            ans.append(st[::])
+            if idx == len(nums):
+                ans.append(st[:])
+                return
 
-            for i in range(idx, len(nums)):
-                st.append(nums[i])
-                dfs(i + 1)
-                st.pop()
+            # take
+            st.append(nums[idx])
+            dfs(idx + 1)
+            st.pop()
+
+            # not take
+            dfs(idx + 1)
+
 
         dfs(0)
 
