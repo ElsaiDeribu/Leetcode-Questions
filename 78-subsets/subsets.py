@@ -1,30 +1,18 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
-        nums.sort()
-
         ans = []
-        subset = []
+        st = []
 
         def dfs(idx):
-
-            ans.append(subset.copy())
+    
+            ans.append(st[::])
 
             for i in range(idx, len(nums)):
-
-                if i > idx and nums[i] == nums[i - 1]:
-                    continue
-
-                subset.append(nums[i])
+                st.append(nums[i])
                 dfs(i + 1)
-                subset.pop()
-    
+                st.pop()
 
-    
         dfs(0)
 
         return ans
-
-
-
-        
