@@ -6,40 +6,45 @@ class TrieNode:
 class WordDictionary:
 
     def __init__(self):
-        self.trie = TrieNode()
+        self.head = TrieNode()
         
+
     def addWord(self, word: str) -> None:
-        node = self.trie
+        curr = self.head
 
-        for w in word:
-            if w not in node.children:
-                node.children[w] = TrieNode()
+        for letter in word:
+            if letter not in curr.children:
+                curr.children[letter] = TrieNode()
+            curr = curr.children[letter]
 
-            node = node.children[w]
+        curr.isEnd = True
+        
 
-        node.isEnd = True
+  
 
     def search(self, word: str) -> bool:
-        node = self.trie
+        def _dfs(idx, curr, word):
+            
+                if idx == len(word):
+                    return curr.isEnd
 
-        def dfs(node, idx):
-            if idx == len(word):
-                return node.isEnd
 
-            if word[idx] != ".":
-                if word[idx] not in node.children:
-                    return False
-
-                return dfs(node.children[word[idx]], idx + 1)
-
-            else:
                 res = False
-                for child in node.children:
-                    res = res or dfs(node.children[child], idx + 1)
+
+                if word[idx] == ".":
+                    for child in curr.children.values():
+                        res = res or _dfs(idx + 1, child, word)
+
+                elif word[idx] not in curr.children: return False
+                else:
+                    res = res or _dfs(idx + 1, curr.children[word[idx]], word)
 
                 return res
 
-        return dfs(node, 0)
+        return _dfs(0, self.head, word)
+
+
+
         
 
 
