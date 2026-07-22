@@ -10,6 +10,8 @@ class WordDictionary:
         
 
     def addWord(self, word: str) -> None:
+        # TC: O(L), L = len(word) traverse each character once
+        # SC: O(L), worst case every character creates a new TrieNode
         curr = self.head
 
         for letter in word:
@@ -22,6 +24,8 @@ class WordDictionary:
   
 
     def search(self, word: str) -> bool:
+        # TC: O(26^L) L = len(word), worst case being all of them are "."
+        # SC: O(L), recursion call stack
 
         def _dfs(idx, curr):
             
