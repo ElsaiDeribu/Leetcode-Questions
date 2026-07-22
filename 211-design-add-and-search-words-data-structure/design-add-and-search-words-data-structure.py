@@ -31,11 +31,11 @@ class WordDictionary:
                     for child in curr.children.values():
                         if _dfs(idx + 1, child): return True
 
+                    return False
+
                 elif word[idx] not in curr.children: return False
 
                 else: return _dfs(idx + 1, curr.children[word[idx]])
-
-                return False
 
 
         return _dfs(0, self.head)
