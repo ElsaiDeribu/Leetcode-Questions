@@ -18,30 +18,27 @@ class WordDictionary:
             curr = curr.children[letter]
 
         curr.isEnd = True
-        
 
   
 
     def search(self, word: str) -> bool:
-        def _dfs(idx, curr, word):
+
+        def _dfs(idx, curr):
             
-                if idx == len(word):
-                    return curr.isEnd
-
-
-                res = False
+                if idx == len(word): return curr.isEnd
 
                 if word[idx] == ".":
                     for child in curr.children.values():
-                        res = res or _dfs(idx + 1, child, word)
+                        if _dfs(idx + 1, child): return True
 
                 elif word[idx] not in curr.children: return False
-                else:
-                    res = res or _dfs(idx + 1, curr.children[word[idx]], word)
 
-                return res
+                else: return _dfs(idx + 1, curr.children[word[idx]])
 
-        return _dfs(0, self.head, word)
+                return False
+
+
+        return _dfs(0, self.head)
 
 
 
