@@ -1,6 +1,8 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         
+        # TC: O(m × n)
+        # SC: O(m × n) (recursive DFS stack)
 
         dirs = [(0,1), (1,0), (-1,0), (0,-1)]
 
