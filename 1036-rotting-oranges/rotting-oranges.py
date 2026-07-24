@@ -17,7 +17,7 @@ class Solution:
             for _ in range(len(deq)):
 
                 row, col = deq.popleft()
-
+               
                 for dr, dc in dirs:
                     new_row = dr + row
                     new_col = dc + col
