@@ -34,7 +34,7 @@ class Solution:
                 new_row = dr + row
                 new_col = dc + col
 
-                if is_inbound(new_row, new_col) and board[new_row][new_col] == "O" :
+                if board[new_row][new_col] == "O" :
                     capture(new_row, new_col)
 
 
@@ -42,7 +42,7 @@ class Solution:
             for col in range(len(board[0])):
                 if board[row][col] == "O" and check(row, col):
                     capture(row, col)
-                    
+
                 visited = set()
 
 
