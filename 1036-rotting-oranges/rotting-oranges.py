@@ -12,7 +12,7 @@ class Solution:
                 if grid[row][col] == 2:
                     deq.append((row, col))
 
-        time = -1
+        time = -1 if deq else 0
         while deq:
             for _ in range(len(deq)):
 
@@ -33,4 +33,4 @@ class Solution:
                     return -1
 
 
-        return max(time, 0)
+        return time
