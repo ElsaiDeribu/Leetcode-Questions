@@ -1,5 +1,8 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+
+        # TC: O(m * n)
+        # SC: O(m * n)
         
         deq = deque([])
         dirs = [(0,1), (1,0), (-1,0), (0,-1)]
@@ -12,7 +15,7 @@ class Solution:
                 if grid[row][col] == 2:
                     deq.append((row, col))
 
-        time = -1 if deq else 0
+        time = -1 if deq else 0 # -1 if we have rotten oranges at the start since they don't take time to rot
         while deq:
             for _ in range(len(deq)):
 
