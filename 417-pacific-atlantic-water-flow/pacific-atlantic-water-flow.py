@@ -1,66 +1,76 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+       
+        deq = deque([])
+        visited = set()
+        dirs = [(0,1), (1,0), (-1,0), (0,-1)]
+        def is_inbound(row, col):
+            return 0 <= row < len(heights) and 0 <= col < len(heights[0])
 
-        p_visited = set()
-        deq = deque()
-        direc = [(0,1), (1,0), (-1,0), (0,-1)]
 
-        def inbound(r,c):
-            return 0 <= r < len(heights) and 0 <= c < len(heights[0])
+        for col in range(len(heights[0])):
+            visited.add((0,col))
+            deq.append((0,col))
 
-
-        for r in range(len(heights)):
-            deq.append((r,0))
-            p_visited.add((r,0))
-
-        for c in range(len(heights[0])):
-            deq.append((0,c))
-            p_visited.add((0,c))
-
+        for row in range(len(heights)):
+            visited.add((row,0))
+            deq.append((row,0))
         
+        
+
         while deq:
 
             for _ in range(len(deq)):
-                cell = deq.popleft()
+                row, col = deq.popleft()
 
-                for r, c in direc:
-                    row, col = cell[0] + r, cell[1] + c
+                for dr, dc in dirs:
+                    new_row = dr + row
+                    new_col = dc + col
 
-                    if (row, col) not in p_visited and inbound(row, col) and heights[row][col] >= heights[cell[0]][cell[1]]:
-                        p_visited.add((row,col))
-                        deq.append((row,col))
+                    if is_inbound(new_row, new_col) and (new_row, new_col) not in visited:
+                        if heights[new_row][new_col] >= heights[row][col]:
+                            visited.add((new_row, new_col))
+                            deq.append((new_row, new_col))
 
 
+
+        deq = deque([])
+        paci = visited.copy()
+        visited = set()
+
+        for col in range(len(heights[0])):
+            visited.add((len(heights) - 1,col))
+            deq.append((len(heights) - 1,col))
+
+        for row in range(len(heights)):
+            visited.add((row,len(heights[0]) - 1))
+            deq.append((row,len(heights[0]) - 1))
         
-        a_visited = set()
-
-        for r in range(len(heights)):
-            c = len(heights[0]) - 1
-            deq.append((r,c))
-            a_visited.add((r,c))
-
-        for c in range(len(heights[0])):
-            r = len(heights) - 1
-            deq.append((r,c))
-            a_visited.add((r,c))
-
         
+
         while deq:
 
             for _ in range(len(deq)):
-                cell = deq.popleft()
+                row, col = deq.popleft()
 
-                for r, c in direc:
-                    row, col = cell[0] + r, cell[1] + c
+                for dr, dc in dirs:
+                    new_row = dr + row
+                    new_col = dc + col
 
-                    if (row, col) not in a_visited and inbound(row, col) and heights[row][col] >= heights[cell[0]][cell[1]]:
-                        a_visited.add((row,col))
-                        deq.append((row,col))
+                    if is_inbound(new_row, new_col) and (new_row, new_col) not in visited:
+                        if heights[new_row][new_col] >= heights[row][col]:
+                            visited.add((new_row, new_col))
+                            deq.append((new_row, new_col))
 
 
+        ans = []
+        for item in visited:
+            if item in paci:
+                ans.append(list(item))
+
+        return ans
 
 
-        return list(p_visited & a_visited)
 
 
 
