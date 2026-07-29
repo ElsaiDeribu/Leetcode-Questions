@@ -1,31 +1,51 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
 
-        adj_lst = defaultdict(list)
-        pre_count = defaultdict(int)
+
+        # TC: O(V + E)
+        # SC: O(V + E)
+
+        # V = number of courses
+        # E = number of prerequisite relationships
+        
+
         deq = deque([])
         order = []
+        pre_count = defaultdict(int)
+        pre_list = defaultdict(list)
 
         for crs, pre in prerequisites:
-            adj_lst[pre].append(crs)
             pre_count[crs] += 1
+            pre_list[pre].append(crs)
 
+        
         for crs in range(numCourses):
             if pre_count[crs] == 0:
                 deq.append(crs)
-
         
+
         while deq:
 
             pre = deq.popleft()
             order.append(pre)
 
-            for crs in adj_lst[pre]:
+            for crs in pre_list[pre]:
                 pre_count[crs] -= 1
                 if pre_count[crs] == 0:
                     deq.append(crs)
 
-
-
+        
         return order if len(order) == numCourses else []
+
+
+
+
+
+
+
+
+
+
+
+
         
