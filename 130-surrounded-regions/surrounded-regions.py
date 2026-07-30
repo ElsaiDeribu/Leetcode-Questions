@@ -4,8 +4,10 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         
+        #  TC O(M * N)
+        #  SC O(M * N) from recursion stack
+
         dirs = [(0,1), (1,0), (-1,0), (0,-1)]
-        visited = set()
         def is_inbound(row, col):
             return 0 <= row < len(board) and 0 <= col < len(board[0])
 
