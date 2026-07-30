@@ -1,6 +1,14 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
 
+
+        # TC: O(V + E)
+        # SC: O(V + E)
+
+        # V = number of courses
+        # E = number of prerequisite relationships
+        
+
         pre_count = defaultdict(int)
         pre_list = defaultdict(list)
         deq = deque([])
