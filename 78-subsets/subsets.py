@@ -1,10 +1,14 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
+
+        # TC: O(n · 2ⁿ)
+        # SC: O(n · 2ⁿ)
+
         ans = []
         st = []
 
         def dfs(idx):
+
             if idx == len(nums):
                 ans.append(st[:])
                 return
@@ -17,7 +21,7 @@ class Solution:
             # not take
             dfs(idx + 1)
 
-
         dfs(0)
+
 
         return ans
