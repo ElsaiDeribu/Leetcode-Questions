@@ -1,23 +1,19 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         
-
         ans = []
+        path = []
 
-        def dfs(lst, idx):
-            if len(lst) == k:
-                ans.append(lst[:])
+        def dfs(start):
+            if len(path) == k:
+                ans.append(path[:])
                 return
 
-            for i in range(idx, n + 1):
-                lst.append(i)
-                dfs(lst, i + 1)
-                lst.pop()
+            for idx in range(start, n + 1):
+                path.append(idx)
+                dfs(idx + 1)
+                path.pop()
 
-        dfs([], 1)
+        dfs(1)
 
         return ans
-
-
-
-            
