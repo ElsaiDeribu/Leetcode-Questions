@@ -1,41 +1,46 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         
+        # Note: similar to finding the subsets problem
+        
         # ans = []
         # path = []
 
-        # def dfs(start):
+        # def dfs(idx):
+            
         #     if len(path) == k:
         #         ans.append(path[:])
         #         return
+           
+        #     if idx > n: return
 
-        #     for idx in range(start, n + 1):
-        #         path.append(idx)
-        #         dfs(idx + 1)
-        #         path.pop()
+        #     # take
+        #     path.append(idx)
+        #     dfs(idx + 1)
+        #     path.pop()
+
+        #     # not take
+        #     dfs(idx + 1)
 
         # dfs(1)
 
         # return ans
-        
+
+
+
+
         ans = []
         path = []
 
-        def dfs(idx):
-            
+        def dfs(start):
             if len(path) == k:
                 ans.append(path[:])
                 return
-           
-            if idx > n: return
 
-            # take
-            path.append(idx)
-            dfs(idx + 1)
-            path.pop()
-
-            # not take
-            dfs(idx + 1)
+            for idx in range(start, n + 1):
+                path.append(idx)
+                dfs(idx + 1)
+                path.pop()
 
         dfs(1)
 
