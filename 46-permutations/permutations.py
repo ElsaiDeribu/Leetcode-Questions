@@ -1,28 +1,25 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
-        # TC O(n! · n)
-        # SC O(n! · n)
-        
+      
         ans = []
-        path = []
+        perm = []
         visited = set()
 
         def dfs():
-            if len(path) == len(nums):
-                ans.append(path[:])
+            if len(perm) == len(nums):
+                ans.append(perm[:])
                 return
 
-            for i in range(len(nums)):
-                if nums[i] not in visited:
-                    visited.add(nums[i])
-                    path.append(nums[i])
+            for num in nums:
+                if num not in visited:
+                    visited.add(num)
+                    perm.append(num)
 
                     dfs()
 
-                    path.pop()
-                    visited.remove(nums[i])
+                    visited.remove(num)
+                    perm.pop()
 
         dfs()
-
         return ans
