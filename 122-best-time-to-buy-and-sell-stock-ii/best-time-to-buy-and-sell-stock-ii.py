@@ -1,18 +1,21 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-
         
-        profit = 0
-        curr = prices[0]
+        @cache
+        def dfs(idx, last_action):
+            if idx == len(prices): return 0
 
-        for price in prices:
+            if last_action == "buy":
+                res1 = dfs(idx + 1, last_action)
+                res2 = dfs(idx + 1, "sell") + prices[idx]
 
-            if price > curr:
-                profit += price - curr
-                curr = price
+                return max(res1, res2)
 
             else:
-                curr = min(curr, price)
+                res1 = dfs(idx + 1, last_action)
+                res2 = dfs(idx + 1, "buy") - prices[idx]
+
+                return max(res1, res2)
 
 
-        return profit
+        return dfs(0, "")
