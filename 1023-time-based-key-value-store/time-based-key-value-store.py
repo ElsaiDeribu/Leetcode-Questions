@@ -24,7 +24,7 @@ class TimeMap:
         if l == 0: return ''
 
 
-        return self.dic[key][l - 1][1]
+        return self.dic[key][r][1]
         
 
 
