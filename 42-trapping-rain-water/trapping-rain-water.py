@@ -8,7 +8,8 @@ class Solution:
 
 
         while left < right:
-
+            
+            # Because we keep the index of largest value so far in either right or left vars based on the winner
             if height[left] < height[right]:
                 left_max = max(left_max, height[left])
                 ans += left_max - height[left]
