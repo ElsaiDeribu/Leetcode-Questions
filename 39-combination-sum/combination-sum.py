@@ -1,25 +1,30 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 
-        ans = set()
+        ans = []
         perm = []
 
-        def dfs(left_over):
-            if left_over < 0:
+        def dfs(idx, left_over):
+
+            if left_over < 0 or idx == len(candidates):
                 return 
 
             if left_over == 0:
-                ans.add(tuple(sorted(perm[:])))
+                ans.append(perm[:])
                 return
 
-            for _, val  in enumerate(candidates):
-                perm.append(val)
-                dfs(left_over - val)
-                perm.pop()
 
-        dfs(target)
+            perm.append(candidates[idx])
+            dfs(idx, left_over - candidates[idx])
+            perm.pop()
 
-        return list(ans)
+
+            dfs(idx + 1, left_over)
+
+
+        dfs(0, target)
+
+        return ans
 
 
 
