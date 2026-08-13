@@ -1,15 +1,15 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]: 
                 
-        # n = number of candidates
-        # T = target
-        # m = minimum candidate value
-        # L = floor(T / m) = maximum combination length
-        # C = number of valid combinations
-        #
-        # TC: O(C(n + L, L) + L·C)
-        # SC: O(n + L) auxiliary, O(n + L + L·C) including output
+        # n — number of candidates
+        # T — target
+        # m — minimum candidate value
+        # L — ⌊T / m⌋, maximum recursion depth from "take" moves (each take reduces left_over by at least m)
 
+        # Upper bound:
+        # TC: O(2^(n+L))
+        # SC: O(2^(n+L))
+        
         ans = []
         perm = []
 
