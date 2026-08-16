@@ -2,6 +2,10 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
 
         st = []
+        
+        # note: 
+        #     int(-5 / 2)  # -2
+        #     -5 // 2      # -3
 
         for token in tokens:
             if token in {"+", "-", "*", "/"}:
