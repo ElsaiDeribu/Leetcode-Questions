@@ -1,9 +1,11 @@
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         
+        # TC: O(E·α(N)) ≈ O(E)
+        # SC: O(V)
+
         parent = {i:i for i in range(1, len(edges) + 1)}
         size = {i:1 for i in range(1, len(edges) + 1)}
-        
         
         def find(x): 
             
