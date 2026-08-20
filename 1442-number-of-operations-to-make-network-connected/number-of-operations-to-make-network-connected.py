@@ -1,38 +1,61 @@
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
 
-        ops = 0
-        cables = 0
-        adj_list = defaultdict(list)
-        visited = set()
+        if len(connections) < n - 1:
+            return -1
+        
+        parent = {i:i for i in range(n)}
+        size = {i:1 for i in range(n)}
+
+
+        def find_parent(x):
+            if parent[x] == x:
+                return x
+
+            parent[x] = find_parent(parent[x])
+
+            return parent[x]
+
+
+        def union(x, y):
+
+            rep_x = find_parent(x)
+            rep_y = find_parent(y)
+
+
+            if rep_x == rep_y:
+                return [x, y]
+
+            if size[rep_x] < size[rep_y]:
+
+                parent[rep_x] = rep_y
+                size[rep_y] += size[rep_x]
+
+            else:
+                parent[rep_y] = rep_x
+                size[rep_x] += size[rep_y]
+
 
         for n1, n2 in connections:
-            adj_list[n1].append(n2)
-            adj_list[n2].append(n1)
-            cables +=1
-
-        if cables < n - 1: return -1
+            union(n1, n2)
 
 
-        def dfs(node):
-            visited.add(node)
-
-            for neigbr in adj_list[node]:
-                if neigbr not in visited:
-                    dfs(neigbr)
+        gaps = len({find_parent(i) for i in range(n)})
 
 
-        for node in range(n):
-            if node not in visited:
-                ops +=1
-                dfs(node)
-
-
-        return ops - 1
-
-
-
-
-
-
+        return gaps - 1
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
