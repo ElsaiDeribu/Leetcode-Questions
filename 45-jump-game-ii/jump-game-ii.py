@@ -1,18 +1,24 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
         
+        # TC: O(n²)
+        # SC: O(n)
 
-        l, r = 0, 0
-        ans = 0
+        n = len(nums)
 
-        while r < len(nums) - 1:
+        @cache
+        def dfs(idx):
+            if idx >= n - 1:
+                return 0
 
-            max_dest = 0
-            for i in range(l, r + 1):
-                max_dest = max(max_dest, i + nums[i])
+            res = float("inf")
+            left = idx + 1
+            right = idx + nums[idx]
 
-            ans += 1
-            l = r + 1
-            r = max_dest
+            for i in range(left, right + 1):
+                res = min(res, dfs(i))
 
-        return ans
+            return res + 1
+
+
+        return dfs(0) 
