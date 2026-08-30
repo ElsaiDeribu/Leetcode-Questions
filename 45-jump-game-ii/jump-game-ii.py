@@ -1,24 +1,25 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
         
-        # TC: O(n²)
-        # SC: O(n)
+        # TC: O(n)
+        # SC: O(1)
 
-        n = len(nums)
+        steps = 0
+        left, right = 0, 0
 
-        @cache
-        def dfs(idx):
-            if idx >= n - 1:
-                return 0
+        while right < len(nums) - 1:
 
-            res = float("inf")
-            left = idx + 1
-            right = idx + nums[idx]
+            new_right = 0
+            for idx in range(left, right + 1):
+                new_right = max(idx + nums[idx], new_right)
 
-            for i in range(left, right + 1):
-                res = min(res, dfs(i))
-
-            return res + 1
+            left = right + 1
+            right = new_right
+            steps += 1
 
 
-        return dfs(0) 
+        return steps
+            
+
+
+
