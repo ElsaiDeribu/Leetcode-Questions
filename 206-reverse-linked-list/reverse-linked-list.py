@@ -10,7 +10,11 @@ class Solution:
         prev, curr = None, head
 
         while curr:
-            prev, curr.next, curr,  = curr, prev, curr.next, 
+
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
 
 
         return prev
