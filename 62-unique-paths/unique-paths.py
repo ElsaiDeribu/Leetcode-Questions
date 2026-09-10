@@ -1,21 +1,31 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        
+
+
+        dirs = [(0,1), (1,0)]
+        def is_inbound(row, col):
+            return 0 <= row < m and 0 <= col < n
+
         @cache
-        def dp(r, c):
-            if r == m - 1 and c == n - 1:
+        def dfs(row, col):
+
+            if row == m - 1 and col == n - 1:
                 return 1
 
-            if r >= m or c >= n:
+            if not is_inbound(row, col):
                 return 0
 
-            # move left
-            left = dp(r, c + 1)
+            res = 0
+            for dr, dc in dirs:
+                new_row, new_col = row + dr, col + dc
+                res += dfs(new_row, new_col)
 
-            # move down
-            down = dp(r + 1, c)
+            return res
 
-            return left + down
+        return dfs(0, 0)
 
 
-        return dp(0,0)
+        
+
+        
+        
