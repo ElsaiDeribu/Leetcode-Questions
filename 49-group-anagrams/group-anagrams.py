@@ -1,17 +1,19 @@
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-           
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+
         group = defaultdict(list)
+
 
         for word in strs:
 
-            chrs = [0] * 26
-            for c in word:
-                chrs[ord(c) - 97] += 1
+            key = [0] * 26
 
-            group[tuple(chrs)].append(word)
+            for char in word:
+                key[ord(char) - 97] += 1
+
+            group[tuple(key)].append(word)
 
 
-        return list(group.values())
 
+        return [val for val in group.values()]
         
