@@ -5,23 +5,23 @@ class Solution:
         cols = defaultdict(set)
         sects = defaultdict(set)
 
-        for row in range(len(board)):
-            for col in range(len(board[row])):
-                
-                num = board[row][col]
-                if num == ".":
-                    continue
+        for r in range(len(board)):
+            for c in range(len(board[0])):
 
-                sect = (row // 3, col // 3)
-                if (num in rows[row]) or (num in cols[col]) or (num in sects[sect]):
-                    return False
+                if board[r][c] != ".":
+                    
+                    num = board[r][c]
 
-                rows[row].add(num)
-                cols[col].add(num)
-                sects[sect].add(num)
+                    R = r//3
+                    C = c//3
+
+                    if num in rows[r] or num in cols[c] or num in sects[(R,C)]:
+                        return False
+
+                    rows[r].add(num)
+                    cols[c].add(num)
+                    sects[(R,C)].add(num)
 
 
         return True
 
-
-        
