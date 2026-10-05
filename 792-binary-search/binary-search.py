@@ -7,7 +7,8 @@ class Solution:
 
             m = (l + r) // 2
 
-            if nums[m] == target: return m
+            if nums[m] == target: 
+                return m
 
             if nums[m] > target:
                 r = m - 1
