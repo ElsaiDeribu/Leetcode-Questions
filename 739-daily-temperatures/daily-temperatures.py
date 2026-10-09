@@ -5,15 +5,13 @@ class Solution:
         st = []
         ans = [0] * len(temperatures)
 
-        for i in range(len(temperatures)):
+        for idx, temp in enumerate(temperatures):
 
-            while st and st[-1][1] < temperatures[i]:
-                idx, val = st.pop()
-                days = i - idx
-                ans[idx] = days
+            while st and temperatures[st[-1]] < temp:
+                i = st.pop()
+                ans[i] = idx - i
 
-            st.append((i, temperatures[i]))
-
+            st.append(idx)
 
         return ans
 
