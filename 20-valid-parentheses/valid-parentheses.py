@@ -1,19 +1,22 @@
 class Solution:
     def isValid(self, s: str) -> bool:
 
+        pairs = {"{":"}", "(":")", "[":"]"}
         st = []
-        pairs = {"[":"]", "{":"}", "(":")"}
 
-
-        for char in s:
-
-            if char not in pairs:
-                if st and pairs[st[-1]] == char:
+        for bra in s:
+            if bra not in pairs:
+                if st and pairs[st[-1]] == bra:
                     st.pop()
-                else:
+                else: 
                     return False
             else:
-                st.append(char)
+                st.append(bra)
+
+        if st: return False
+        
+        return True
+
+                
 
 
-        return False if st else True
