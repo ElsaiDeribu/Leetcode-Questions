@@ -7,7 +7,9 @@ class Solution:
         for price in prices:
 
             running_min = min(running_min, price)
-            ans = max(price - running_min, ans)
+            profit = price - running_min
+            
+            ans = max(profit, ans)
 
 
         return ans
