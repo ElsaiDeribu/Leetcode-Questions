@@ -3,20 +3,17 @@ class Solution:
 
         ans = 0
         l = 0
-        window_dic = defaultdict(int)
+        window = defaultdict(int)
 
 
         for r in range(len(s)):
-            window_dic[s[r]] += 1
+            window[s[r]] += 1
 
-            while window_dic[s[r]] > 1:
-                window_dic[s[l]] -= 1
-                if window_dic[s[l]] == 0:
-                    window_dic.pop(s[l])
-
+            while window[s[r]] > 1:
+                window[s[l]] -= 1
                 l += 1
 
-            ans = max(len(window_dic), ans)
+            ans = max(r - l + 1, ans)
 
 
         return ans
