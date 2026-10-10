@@ -6,6 +6,7 @@ class Solution:
 
         for bra in s:
             if bra not in pairs:
+                
                 if st and pairs[st[-1]] == bra:
                     st.pop()
                 else: 
