@@ -1,24 +1,19 @@
 class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
+    def longestCommonPrefix(self, strs: list[str]) -> str:
+        
+        ans = []
+        shortest = min(strs, key=lambda x: len(x))
 
-        common = []
+        for i in range(len(shortest)):
+            for j in range(len(strs)):
+                if strs[j][i] != shortest[i]:
+                    return ''.join(ans)
 
-        for s in range(len(strs[0])):
-            common.append(strs[0][s])
-            for i in range(1, len(strs)):
-
-                if len(strs[i]) < s + 1 :
-                    common.pop()
-                    return ''.join(common)
-
-                elif common[-1] != strs[i][s]:
-                    common.pop()
-                    return ''.join(common)
+            ans.append(shortest[i])
 
 
-        return ''.join(common)
+        return ''.join(ans)
 
 
-            
 
         
