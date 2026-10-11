@@ -1,9 +1,8 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        
-        # TC: O(m × n)
-        # SC: O(m × n) (recursive DFS stack)
+# fib
 
+        ans = 0
         dirs = [(0,1), (1,0), (-1,0), (0,-1)]
 
         def is_inbound(row, col):
@@ -11,10 +10,10 @@ class Solution:
 
 
         def dfs(row, col):
- 
+
             grid[row][col] = 0
 
-            res = 1
+            res = 0
             for dr, dc in dirs:
                 new_row = row + dr
                 new_col = col + dc
@@ -22,13 +21,15 @@ class Solution:
                 if is_inbound(new_row, new_col) and grid[new_row][new_col] == 1:
                     res += dfs(new_row, new_col)
 
-            return res
+            return res + 1
 
 
-        ans = 0
+        
         for row in range(len(grid)):
             for col in range(len(grid[0])):
+
                 if grid[row][col] == 1:
                     ans = max(ans, dfs(row, col))
+
 
         return ans
