@@ -1,37 +1,29 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
 
-        m, n = len(grid), len(grid[0])
-        direcs = [(0,1),(1,0),(-1,0),(0,-1)]
         ans = 0
+        dirs = [(0,1), (1,0), (0,-1), (-1,0)]
+
+        def is_inbound(row, col):
+            return 0 <= row < len(grid) and 0 <= col < len(grid[0])
+
+        def dfs(row, col):
+            
+            grid[row][col] = "0"
+
+            for dr, dc in dirs:
+                new_row = row + dr
+                new_col = col + dc
+
+                if is_inbound(new_row, new_col) and grid[new_row][new_col] == "1":
+                    dfs(new_row, new_col)
 
 
-        def is_inbound(r, c):
-            return 0 <= r < m and 0 <= c < n
-
-        def dfs(r, c):
-
-            grid[r][c] = "0"
-
-            for dr, dc in  direcs:
-                nr, nc = dr + r, dc + c
-
-                if is_inbound(nr, nc) and grid[nr][nc] == "1":
-                    dfs(nr, nc)
-    
-                
         for row in range(len(grid)):
             for col in range(len(grid[0])):
                 if grid[row][col] == "1":
+                    dfs(row, col)
                     ans += 1
-                    dfs(row,col)
 
         return ans
 
-
-
-
-
-
-
-        
